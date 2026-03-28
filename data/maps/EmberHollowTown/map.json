@@ -48,7 +48,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EmberHollowTown_EventScript_ExitGuard",
-      "flag": "0"
+      "flag": "FLAG_EMBER_NORTH_GATE_TWIN_MOVED"
     }
   ],
   "warp_events": [

@@ -270,7 +270,7 @@
 #define VAR_GYM_LIGHT_STATE                              0x40F8
 #define VAR_UNUSED_0x40F9                                0x40F9 // Unused Var
 #define VAR_BEACONFALL_BLACKOUT_MSG                       0x40FA // 0 = show blackout text once on Ember via ON_FRAME; 1 = done
-#define VAR_BEACONFALL_EMBER_TWIN_CUTSCENE                0x40FB // 0 = run north-gate twin step-aside check once; 1 = done
+#define VAR_UNUSED_0x40FB                                0x40FB // Unused Var
 #define VAR_UNUSED_0x40FC                                0x40FC // Unused Var
 #define VAR_UNUSED_0x40FD                                0x40FD // Unused Var
 #define VAR_UNUSED_0x40FE                                0x40FE // Unused Var

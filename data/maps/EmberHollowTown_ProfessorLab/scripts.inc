@@ -70,8 +70,8 @@ EmberHollowTown_ProfessorLab_EventScript_MiraBattlePiplup::
 
 EmberHollowTown_ProfessorLab_EventScript_MiraDefeated::
 	setflag FLAG_BEACONFALL_TUTORIAL_RIVAL_BEATEN
+	setflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
 	setvar VAR_RIVAL_BATTLES, 1
-	setvar VAR_BEACONFALL_EMBER_TWIN_CUTSCENE, 0
 	msgbox EmberHollowTown_ProfessorLab_Text_MiraAfter, MSGBOX_DEFAULT
 	release
 	end
@@ -124,9 +124,8 @@ EmberHollowTown_ProfessorLab_Text_MiraDefeat::
 	.string "Fresh out of the lab, too.$"
 
 EmberHollowTown_ProfessorLab_Text_MiraAfter::
-	.string "MIRA: Gates stay closed.\p"
-	.string "You'll need a Pokémon first.\p"
-	.string "You're clear.\p"
+	.string "MIRA: You're clear.\p"
+	.string "The north gate will open up.\p"
 	.string "I'll catch up on Saltwind Path.$"
 
 EmberHollowTown_ProfessorLab_Text_MiraLater::
