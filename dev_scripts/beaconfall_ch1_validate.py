@@ -3,12 +3,12 @@
 Beaconfall Chapter 1 Validator
 
 This script validates Chapter 1 map integrity including:
-- Map group membership and order
+- Map group membership and order (overworld + Ember interiors)
 - Connection and warp closure
-- Expected rival and gym gate vars
-- Absence of borrowed map metadata
-- Encounter coverage (only Saltwind Path and Cinder Reed Grove)
-- Presence of standout rare species (Shinx, Eevee, Growlithe, Riolu, Ralts)
+- Expected chapter script vars/flags
+- Absence of borrowed map metadata on outdoor maps
+- Encounter coverage (only Saltwind Path and Cinder Reed Grove; no town/gym tables)
+- Saltwild Path wild species limited to Pidgey, Zigzagoon, Wurmple
 """
 
 import json
@@ -27,10 +27,13 @@ def validate_map_group_membership():
     
     expected_maps = [
         "EmberHollowTown",
-        "Route1_SaltwindPath", 
+        "Route1_SaltwindPath",
         "CinderReedGrove",
         "BrassfallCity",
-        "ForteHallGym"
+        "ForteHallGym",
+        "EmberHollowTown_PlayersHouse_2F",
+        "EmberHollowTown_PlayersHouse_1F",
+        "EmberHollowTown_ProfessorLab",
     ]
     
     actual_maps = map_groups.get("gMapGroup_BeaconfallChapter1", [])
@@ -151,42 +154,29 @@ def validate_encounters():
     print("✓ Encounters only on Route 1 and Grove")
     return True
 
-def validate_rare_species():
-    """Check that rare standout species are present."""
+def validate_route1_wild_species():
+    """Saltwind Path land encounters must only use Pidgey / Zigzagoon / Wurmple."""
     encounters = load_json("src/data/wild_encounters.json")
-    
-    species_to_find = {
-        "SPECIES_SHINX": False,      # Saltwind Path
-        "SPECIES_EEVEE": False,      # Saltwind Path
-        "SPECIES_GROWLITHE": False,  # Cinder Reed Grove
-        "SPECIES_RIOLU": False,      # Cinder Reed Grove
-        "SPECIES_RALTS": False       # Cinder Reed Grove
-    }
-    
+    allowed = {"SPECIES_PIDGEY", "SPECIES_ZIGZAGOON", "SPECIES_WURMPLE"}
+    bad = []
     for group in encounters.get("wild_encounter_groups", []):
-        # Only check groups with for_maps: true
         if not group.get("for_maps", False):
             continue
         for enc in group.get("encounters", []):
-            map_name = enc.get("map", "")
-            # Only check chapter 1 maps
-            if map_name not in {"MAP_ROUTE1_SALTWIND_PATH", "MAP_CINDER_REED_GROVE"}:
+            if enc.get("map") != "MAP_ROUTE1_SALTWIND_PATH":
                 continue
-            
-            # Check land mons
-            if "land_mons" in enc:
-                for mon in enc["land_mons"].get("mons", []):
-                    species = mon.get("species", "")
-                    if species in species_to_find:
-                        species_to_find[species] = True
-    
-    all_found = all(species_to_find.values())
-    if not all_found:
-        missing = [s for s, found in species_to_find.items() if not found]
-        print(f"❌ Missing rare species: {missing}")
+            land = enc.get("land_mons")
+            if not land:
+                print("❌ MAP_ROUTE1_SALTWIND_PATH missing land_mons")
+                return False
+            for mon in land.get("mons", []):
+                sp = mon.get("species", "")
+                if sp not in allowed:
+                    bad.append(sp)
+    if bad:
+        print(f"❌ Saltwind Path wilds must be Pidgey/Zigzagoon/Wurmple only. Found: {sorted(set(bad))}")
         return False
-    
-    print("✓ All rare standout species present")
+    print("✓ Saltwind Path wild species match Chapter 1 spec")
     return True
 
 def validate_no_borrowed_flags():
@@ -197,7 +187,13 @@ def validate_no_borrowed_flags():
         "FLAG_WORLD_MAP_VIRIDIAN_CITY"
     }
     
-    maps_to_check = ["EmberHollowTown", "Route1_SaltwindPath", "CinderReedGrove", "BrassfallCity"]
+    maps_to_check = [
+        "EmberHollowTown",
+        "Route1_SaltwindPath",
+        "CinderReedGrove",
+        "BrassfallCity",
+        "ForteHallGym",
+    ]
     
     all_clean = True
     for map_name in maps_to_check:
@@ -256,7 +252,7 @@ def main():
         validate_map_sections,
         validate_connections,
         validate_encounters,
-        validate_rare_species,
+        validate_route1_wild_species,
         validate_no_borrowed_flags,
         validate_expected_vars
     ]

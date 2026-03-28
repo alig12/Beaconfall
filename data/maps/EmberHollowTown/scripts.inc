@@ -1,37 +1,79 @@
 EmberHollowTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, EmberHollowTown_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, EmberHollowTown_OnFrame
 	.byte 0
 
+@ Weather only here. Blackout text runs from ON_FRAME so msgbox does not run inside
+@ RunScriptImmediately (transition scripts), which cannot yield safely and can crash on the next warp.
 EmberHollowTown_OnTransition::
+	goto_if_set FLAG_BEACONFALL_TUTORIAL_RIVAL_BEATEN, EmberHollowTown_OnTransition_Bright
+	setweather WEATHER_SHADE
+	doweather
 	end
 
-EmberHollowTown_EventScript_Professor::
-	lock
-	faceplayer
-	goto_if_set FLAG_BEACONFALL_STARTER_SELECTED, EmberHollowTown_EventScript_ProfessorAfterStarter
-	msgbox EmberHollowTown_Text_Intro, MSGBOX_DEFAULT
-	special ChooseBeaconfallStarter
-	waitstate
-	call BeaconfallChapter1_EventScript_StartJourney
-	msgbox EmberHollowTown_Text_StarterGiven, MSGBOX_DEFAULT
-	release
+EmberHollowTown_OnTransition_Bright::
+	setweather WEATHER_SUNNY
+	doweather
+	playbgm MUS_LITTLEROOT, 0
 	end
 
-EmberHollowTown_EventScript_ProfessorAfterStarter::
-	msgbox EmberHollowTown_Text_PostStarter, MSGBOX_DEFAULT
-	release
+EmberHollowTown_OnFrame::
+	map_script_2 VAR_BEACONFALL_BLACKOUT_MSG, 0, EmberHollowTown_EventScript_BlackoutIntroOnce
+	.2byte 0
+
+EmberHollowTown_EventScript_BlackoutIntroOnce::
+	lockall
+	goto_if_set FLAG_BEACONFALL_TUTORIAL_RIVAL_BEATEN, EmberHollowTown_EventScript_BlackoutIntroDone
+	msgbox EmberHollowTown_Text_BlackoutIntro, MSGBOX_DEFAULT
+EmberHollowTown_EventScript_BlackoutIntroDone::
+	setvar VAR_BEACONFALL_BLACKOUT_MSG, 1
+	releaseall
 	end
+
+EmberHollowTown_EventScript_NorthGateTrigger::
+	lockall
+	goto_if_set FLAG_SYS_POKEMON_GET, EmberHollowTown_EventScript_NorthGateCheckTutorial
+	goto EmberHollowTown_EventScript_ForceBackNeedLab
+
+EmberHollowTown_EventScript_NorthGateCheckTutorial::
+	goto_if_set FLAG_BEACONFALL_TUTORIAL_RIVAL_BEATEN, EmberHollowTown_EventScript_NorthGateRelease
+EmberHollowTown_EventScript_ForceBackNeedMira::
+	msgbox EmberHollowTown_Text_NeedMiraBattle, MSGBOX_DEFAULT
+	goto EmberHollowTown_EventScript_ForceBackCommon
+
+EmberHollowTown_EventScript_ForceBackNeedLab::
+	msgbox EmberHollowTown_Text_NeedPokemon, MSGBOX_DEFAULT
+EmberHollowTown_EventScript_ForceBackCommon::
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Movement_EmberHollowTown_GatePushBack
+	waitmovement 0
+	releaseall
+	end
+
+EmberHollowTown_EventScript_NorthGateRelease::
+	releaseall
+	end
+
+Movement_EmberHollowTown_GatePushBack::
+	walk_down
+	step_end
 
 EmberHollowTown_EventScript_ExitGuard::
 	lock
 	faceplayer
-	goto_if_set FLAG_BEACONFALL_STARTER_SELECTED, EmberHollowTown_EventScript_ExitGuardOpen
-	msgbox EmberHollowTown_Text_ExitBlocked, MSGBOX_DEFAULT
+	goto_if_set FLAG_SYS_POKEMON_GET, EmberHollowTown_EventScript_ExitGuardCheckTutorial
+	msgbox EmberHollowTown_Text_GuardNeedMon, MSGBOX_DEFAULT
 	release
 	end
 
-EmberHollowTown_EventScript_ExitGuardOpen::
-	msgbox EmberHollowTown_Text_ExitOpen, MSGBOX_DEFAULT
+EmberHollowTown_EventScript_ExitGuardCheckTutorial::
+	goto_if_set FLAG_BEACONFALL_TUTORIAL_RIVAL_BEATEN, EmberHollowTown_EventScript_ExitGuardOK
+	msgbox EmberHollowTown_Text_GuardNeedMira, MSGBOX_DEFAULT
+	release
+	end
+
+EmberHollowTown_EventScript_ExitGuardOK::
+	msgbox EmberHollowTown_Text_GuardAllClear, MSGBOX_DEFAULT
 	release
 	end
 
@@ -39,30 +81,33 @@ EmberHollowTown_EventScript_TownSign::
 	msgbox EmberHollowTown_Text_TownSign, MSGBOX_SIGN
 	end
 
-EmberHollowTown_Text_Intro::
-	.string "Welcome to EMBER HOLLOW.\p"
-	.string "Pick the partner who will start your\n"
-	.string "chapter, then meet me by the path.$"
+EmberHollowTown_Text_BlackoutIntro::
+	.string "The harbor lamps just died.\p"
+	.string "Somewhere out on the coast, the beacon\n"
+	.string "network failed, and the whole town went dim.$"
 
-EmberHollowTown_Text_StarterGiven::
-	.string "There we go. Take care of your new\n"
-	.string "partner and keep moving forward.$"
+EmberHollowTown_Text_NeedPokemon::
+	.string "GUARD: Nobody crosses Saltwind during a\n"
+	.string "blackout without a Pokémon.\p"
+	.string "Prof. BIRCH is at the lab. Move.$"
 
-EmberHollowTown_Text_PostStarter::
-	.string "Your journey starts on SALTWIND PATH.\p"
-	.string "Train hard, and come back if you need\n"
-	.string "anything explained.$"
+EmberHollowTown_Text_NeedMiraBattle::
+	.string "GUARD: You got a Pokémon -good. But I saw\n"
+	.string "MIRA still pacing by the lab windows.\p"
+	.string "Finish your business with her first.$"
 
-EmberHollowTown_Text_ExitBlocked::
-	.string "Hold up.\p"
-	.string "You need to choose a starter before\n"
-	.string "leaving town.$"
+EmberHollowTown_Text_GuardNeedMon::
+	.string "GUARD: Lab first. BIRCH doesn't hand out\n"
+	.string "partners for fun. It's quarantine until you.$"
 
-EmberHollowTown_Text_ExitOpen::
-	.string "The road ahead is yours now.\p"
-	.string "Saltwind Path leads east to the rest\n"
-	.string "of the chapter.$"
+EmberHollowTown_Text_GuardNeedMira::
+	.string "GUARD: Talk to MIRA. She doesn't let rookies\n"
+	.string "wander until she's tested them.$"
+
+EmberHollowTown_Text_GuardAllClear::
+	.string "GUARD: Lights are still out, but you've got\n"
+	.string "what you need. Watch the tall grass.$"
 
 EmberHollowTown_Text_TownSign::
 	.string "EMBER HOLLOW\p"
-	.string "The first spark of Beaconfall.$"
+	.string "Harbor spark of Beaconfall.$"

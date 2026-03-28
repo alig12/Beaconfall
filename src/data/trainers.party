@@ -16875,87 +16875,87 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BEACONFALL_RIVAL1_CHIMCHAR ===
-Name: RIVAL
+Name: MIRA
 Class: Rival
-Pic: RS Brendan
-Gender: Male
-Music: Male
+Pic: RS May
+Gender: Female
+Music: Female
 Double Battle: No
 
-Chimchar
+Growlithe
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BEACONFALL_RIVAL1_PIPLUP ===
-Name: RIVAL
+Name: MIRA
 Class: Rival
-Pic: RS Brendan
-Gender: Male
-Music: Male
+Pic: RS May
+Gender: Female
+Music: Female
 Double Battle: No
 
-Piplup
+Wooper
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BEACONFALL_RIVAL1_TURTWIG ===
-Name: RIVAL
+Name: MIRA
 Class: Rival
-Pic: RS Brendan
-Gender: Male
-Music: Male
+Pic: RS May
+Gender: Female
+Music: Female
 Double Battle: No
 
-Turtwig
+Budew
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BEACONFALL_RIVAL2_CHIMCHAR ===
-Name: RIVAL
+Name: MIRA
 Class: Rival
 Pic: RS May
 Gender: Female
 Music: Female
 Double Battle: No
 
-Taillow
-Level: 10
+Pidgey
+Level: 8
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Chimchar
-Level: 11
+Growlithe
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BEACONFALL_RIVAL2_PIPLUP ===
-Name: RIVAL
+Name: MIRA
 Class: Rival
 Pic: RS May
 Gender: Female
 Music: Female
 Double Battle: No
 
-Taillow
-Level: 10
+Pidgey
+Level: 8
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Piplup
-Level: 11
+Wooper
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BEACONFALL_RIVAL2_TURTWIG ===
-Name: RIVAL
+Name: MIRA
 Class: Rival
 Pic: RS May
 Gender: Female
 Music: Female
 Double Battle: No
 
-Taillow
-Level: 10
+Pidgey
+Level: 8
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Turtwig
-Level: 11
+Budew
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BEACONFALL_ROUTE_SCOUT ===
@@ -16967,7 +16967,11 @@ Music: Male
 Double Battle: No
 
 Wurmple
-Level: 3
+Level: 4
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Venonat
+Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BEACONFALL_ROUTE_SAILOR ===
@@ -16979,7 +16983,11 @@ Music: Male
 Double Battle: No
 
 Wingull
-Level: 4
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Lotad
+Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BEACONFALL_GROVE_REED ===
@@ -16995,53 +17003,89 @@ Level: 6
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BEACONFALL_GROVE_MOSS ===
-Name: MOSS
-Class: Lass
-Pic: Lass
-Gender: Female
-Music: Female
+Name: SMUGGLER
+Class: Team Aqua
+Pic: Aqua Grunt M
+Gender: Male
+Music: Male
 Double Battle: No
 
-Seedot
+Poochyena
 Level: 6
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
+Corphish
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
 === TRAINER_BEACONFALL_GYM_LAMP ===
-Name: LAMP
+Name: KIT
 Class: Guitarist
 Pic: Guitarist
 Gender: Male
 Music: Male
 Double Battle: No
 
-Magnemite
-Level: 12
+Whismur
+Level: 11
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BEACONFALL_GYM_BEAM ===
-Name: BEAM
+Name: RAYNE
 Class: Lass
 Pic: Lass
 Gender: Female
 Music: Female
 Double Battle: No
 
-Voltorb
-Level: 12
+Slakoth
+Level: 11
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BEACONFALL_LEADER ===
-Name: CAPTAIN
+Name: VERA
 Class: Leader
 Pic: Leader Wattson
+Gender: Female
+Music: Female
+Double Battle: No
+
+Lillipup
+Level: 12
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Aipom
+Level: 13
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Smeargle
+Level: 14
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BEACONFALL_GYM_TECH ===
+Name: JAX
+Class: Guitarist
+Pic: Guitarist
 Gender: Male
 Music: Male
 Double Battle: No
 
-Magnemite
-Level: 14
+Loudred
+Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Voltorb
-Level: 15
+=== TRAINER_BEACONFALL_ROUTE_COACH ===
+Name: COACH
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Male
+Double Battle: No
+
+Zigzagoon
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Pidgey
+Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe

@@ -670,10 +670,10 @@
 #define FLAG_BRASSFALL_CITY_ENTERED      0x267
 #define FLAG_CHAPTER_1_COMPLETE          0x268
 #define FLAG_CHAPTER_2_HOOK_SHOWN        0x269
-#define FLAG_UNUSED_0x26A  0x26A // Unused Flag
-#define FLAG_UNUSED_0x26B  0x26B // Unused Flag
-#define FLAG_UNUSED_0x26C  0x26C // Unused Flag
-#define FLAG_UNUSED_0x26D  0x26D // Unused Flag
+#define FLAG_BEACONFALL_BLACKOUT_INTRO    0x26A
+#define FLAG_BEACONFALL_TUTORIAL_RIVAL_BEATEN 0x26B
+#define FLAG_BEACONFALL_GROVE_LAMP_A       0x26C
+#define FLAG_BEACONFALL_GROVE_LAMP_B       0x26D
 #define FLAG_UNUSED_0x26E  0x26E // Unused Flag
 #define FLAG_UNUSED_0x26F  0x26F // Unused Flag
 #define FLAG_UNUSED_0x270  0x270 // Unused Flag

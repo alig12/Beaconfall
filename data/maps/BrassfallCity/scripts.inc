@@ -3,6 +3,8 @@ BrassfallCity_MapScripts::
 	.byte 0
 
 BrassfallCity_OnTransition::
+	setweather WEATHER_SHADE
+	doweather
 	end
 
 BrassfallCity_EventScript_RivalBattle::
@@ -50,6 +52,7 @@ BrassfallCity_EventScript_GymGuideOpen::
 BrassfallCity_EventScript_Healer::
 	lock
 	faceplayer
+	setrespawn HEAL_LOCATION_BRASSFALL_CITY
 	msgbox BrassfallCity_Text_Healer, MSGBOX_DEFAULT
 	special HealPlayerParty
 	release

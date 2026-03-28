@@ -1,5 +1,69 @@
 ForteHallGym_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, ForteHallGym_OnLoad
+	map_script MAP_SCRIPT_ON_TRANSITION, ForteHallGym_OnTransition
 	.byte 0
+
+ForteHallGym_OnLoad::
+	call ForteHallGym_EventScript_ApplyPersistedLights
+	end
+
+ForteHallGym_OnTransition::
+	call ForteHallGym_EventScript_UpdateAmbientFlash
+	end
+
+@ Darker flash level = dimmer arena (see Dewford Gym pattern).
+ForteHallGym_EventScript_UpdateAmbientFlash::
+	goto_if_set FLAG_BADGE01_GET, ForteHallGym_EventScript_FlashClear
+	goto_if_ge VAR_GYM_LIGHT_STATE, 3, ForteHallGym_EventScript_FlashClear
+	goto_if_eq VAR_GYM_LIGHT_STATE, 2, ForteHallGym_EventScript_FlashLevel2
+	goto_if_eq VAR_GYM_LIGHT_STATE, 1, ForteHallGym_EventScript_FlashLevel4
+	setflashlevel 6
+	return
+
+ForteHallGym_EventScript_FlashLevel4::
+	setflashlevel 4
+	return
+
+ForteHallGym_EventScript_FlashLevel2::
+	setflashlevel 2
+	return
+
+ForteHallGym_EventScript_FlashClear::
+	setflashlevel 0
+	return
+
+ForteHallGym_EventScript_ApplyPersistedLights::
+	goto_if_set FLAG_BADGE01_GET, ForteHallGym_EventScript_ApplyAllStageLights
+	goto_if_lt VAR_GYM_LIGHT_STATE, 1, ForteHallGym_EventScript_ApplyLightsDone
+	call ForteHallGym_EventScript_LightStageLeftMetatiles
+	goto_if_lt VAR_GYM_LIGHT_STATE, 2, ForteHallGym_EventScript_ApplyLightsDone
+	call ForteHallGym_EventScript_LightStageRightMetatiles
+	goto_if_lt VAR_GYM_LIGHT_STATE, 3, ForteHallGym_EventScript_ApplyLightsDone
+	call ForteHallGym_EventScript_LightStageCenterMetatiles
+ForteHallGym_EventScript_ApplyLightsDone::
+	end
+
+ForteHallGym_EventScript_ApplyAllStageLights::
+	call ForteHallGym_EventScript_LightStageLeftMetatiles
+	call ForteHallGym_EventScript_LightStageRightMetatiles
+	call ForteHallGym_EventScript_LightStageCenterMetatiles
+	end
+
+@ Stage wash lights (Petalburg Gym tileset): left / right / center markers.
+ForteHallGym_EventScript_LightStageLeftMetatiles::
+	setmetatile 1, 9, METATILE_PetalburgGym_SlidingDoor_Frame4, TRUE
+	special DrawWholeMapView
+	return
+
+ForteHallGym_EventScript_LightStageRightMetatiles::
+	setmetatile 7, 9, METATILE_PetalburgGym_SlidingDoor_Frame4, TRUE
+	special DrawWholeMapView
+	return
+
+ForteHallGym_EventScript_LightStageCenterMetatiles::
+	setmetatile 4, 5, METATILE_PetalburgGym_SlidingDoor_Frame4, TRUE
+	special DrawWholeMapView
+	return
 
 ForteHallGym_EventScript_GymGuide::
 	lock
@@ -20,6 +84,9 @@ ForteHallGym_EventScript_TrainerLamp::
 
 ForteHallGym_EventScript_TrainerLampDefeated::
 	addvar VAR_GYM_LIGHT_STATE, 1
+	call ForteHallGym_EventScript_LightStageLeftMetatiles
+	call ForteHallGym_EventScript_UpdateAmbientFlash
+	playse SE_M_MEGA_KICK
 	msgbox ForteHallGym_Text_LampAfter, MSGBOX_AUTOCLOSE
 	end
 
@@ -29,14 +96,29 @@ ForteHallGym_EventScript_TrainerBeam::
 
 ForteHallGym_EventScript_TrainerBeamDefeated::
 	addvar VAR_GYM_LIGHT_STATE, 1
+	call ForteHallGym_EventScript_LightStageRightMetatiles
+	call ForteHallGym_EventScript_UpdateAmbientFlash
+	playse SE_M_MEGA_KICK
 	msgbox ForteHallGym_Text_BeamAfter, MSGBOX_AUTOCLOSE
+	end
+
+ForteHallGym_EventScript_TrainerTech::
+	trainerbattle_single TRAINER_BEACONFALL_GYM_TECH, ForteHallGym_Text_TechIntro, ForteHallGym_Text_TechDefeat, ForteHallGym_EventScript_TrainerTechDefeated
+	end
+
+ForteHallGym_EventScript_TrainerTechDefeated::
+	addvar VAR_GYM_LIGHT_STATE, 1
+	call ForteHallGym_EventScript_LightStageCenterMetatiles
+	call ForteHallGym_EventScript_UpdateAmbientFlash
+	playse SE_M_MEGA_KICK
+	msgbox ForteHallGym_Text_TechAfter, MSGBOX_AUTOCLOSE
 	end
 
 ForteHallGym_EventScript_Leader::
 	lock
 	faceplayer
 	goto_if_set FLAG_BADGE01_GET, ForteHallGym_EventScript_LeaderAfterBadge
-	goto_if_eq VAR_GYM_LIGHT_STATE, 2, ForteHallGym_EventScript_LeaderBattle
+	goto_if_ge VAR_GYM_LIGHT_STATE, 3, ForteHallGym_EventScript_LeaderBattle
 	msgbox ForteHallGym_Text_LeaderBlocked, MSGBOX_DEFAULT
 	release
 	end
@@ -65,9 +147,10 @@ ForteHallGym_EventScript_GymSign::
 	end
 
 ForteHallGym_Text_GymGuide::
-	.string "Beat the trainers to light the hall.\p"
-	.string "When both beacons shine, the leader\n"
-	.string "will battle you.$"
+	.string "Three crew members run the rigs: opener,\n"
+	.string "backup, and lead tech.\p"
+	.string "Beat them in any order. When all three\n"
+	.string "lanes light, VERA steps out.$"
 
 ForteHallGym_Text_GymGuideAfterBadge::
 	.string "You already earned the badge.\p"
@@ -75,34 +158,43 @@ ForteHallGym_Text_GymGuideAfterBadge::
 	.string "wants to train.$"
 
 ForteHallGym_Text_LampIntro::
-	.string "This is the easy part.\n"
-	.string "Let's see if you can handle the glow!$"
+	.string "KIT: House lights, house rules.\n"
+	.string "Left rig is mine. Prove you belong!$"
 
 ForteHallGym_Text_LampDefeat::
-	.string "That light got brighter, didn't it?$"
+	.string "KIT: Hah... alright, left stack is live.$"
 
 ForteHallGym_Text_LampAfter::
-	.string "One beacon is on.\n"
-	.string "Keep pushing.$"
+	.string "The left wash cuts through the dark.$"
 
 ForteHallGym_Text_BeamIntro::
-	.string "I can feel the current in the floor.$"
+	.string "RAYNE: Feel the floor buzz?\n"
+	.string "Right side is my solo!$"
 
 ForteHallGym_Text_BeamDefeat::
-	.string "The hall's brightness jumped again!$"
+	.string "RAYNE: Gorgeous. Right truss is up!$"
 
 ForteHallGym_Text_BeamAfter::
-	.string "The second beacon is lit.\n"
-	.string "The leader should be ready now.$"
+	.string "The right wash just punched in.$"
+
+ForteHallGym_Text_TechIntro::
+	.string "JAX: I'm on center power. Mess with me\n"
+	.string "and the whole grid hears it!$"
+
+ForteHallGym_Text_TechDefeat::
+	.string "JAX: Main throw is yours. Go wake the boss.$"
+
+ForteHallGym_Text_TechAfter::
+	.string "The center spot finally hits VERA's door.$"
 
 ForteHallGym_Text_LeaderBlocked::
-	.string "The hall is still dim.\p"
-	.string "Light both beacons before facing the\n"
-	.string "leader.$"
+	.string "VERA: Patience.\p"
+	.string "I can't read the room until every rig\n"
+	.string "is up: three crew, three lights.$"
 
 ForteHallGym_Text_LeaderIntro::
-	.string "You lit the hall.\p"
-	.string "Now show me the spark that started it!$"
+	.string "VERA: There it is. The hall in full beam.\p"
+	.string "Show me the spark that carried you!$"
 
 ForteHallGym_Text_LeaderDefeat::
 	.string "The light keeps shining even now...$"
@@ -120,4 +212,5 @@ ForteHallGym_Text_LeaderAfterBadge::
 
 ForteHallGym_Text_GymSign::
 	.string "FORTE HALL GYM\p"
-	.string "Light the beacons. Win the badge.$"
+	.string "City relay stage. Light three rigs, earn\n"
+	.string "the Beacon Badge.$"

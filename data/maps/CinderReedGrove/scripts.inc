@@ -3,6 +3,8 @@ CinderReedGrove_MapScripts::
 	.byte 0
 
 CinderReedGrove_OnTransition::
+	setweather WEATHER_SHADE
+	doweather
 	end
 
 CinderReedGrove_EventScript_Gatekeeper::
@@ -57,6 +59,59 @@ CinderReedGrove_EventScript_TrainerMossDefeated::
 	msgbox CinderReedGrove_Text_MossAfter, MSGBOX_AUTOCLOSE
 	end
 
+CinderReedGrove_EventScript_LampA::
+	lock
+	faceplayer
+	goto_if_set FLAG_BEACONFALL_GROVE_LAMP_A, CinderReedGrove_EventScript_LampAAlreadyOn
+	playse SE_M_THUNDER_WAVE
+	setflag FLAG_BEACONFALL_GROVE_LAMP_A
+	msgbox CinderReedGrove_Text_LampAOn, MSGBOX_DEFAULT
+	release
+	end
+
+CinderReedGrove_EventScript_LampAAlreadyOn::
+	msgbox CinderReedGrove_Text_LampAAlreadyOn, MSGBOX_DEFAULT
+	release
+	end
+
+CinderReedGrove_EventScript_LampB::
+	lock
+	faceplayer
+	goto_if_set FLAG_BEACONFALL_GROVE_LAMP_B, CinderReedGrove_EventScript_LampBAlreadyOn
+	playse SE_M_THUNDER_WAVE
+	setflag FLAG_BEACONFALL_GROVE_LAMP_B
+	msgbox CinderReedGrove_Text_LampBOn, MSGBOX_DEFAULT
+	release
+	end
+
+CinderReedGrove_EventScript_LampBAlreadyOn::
+	msgbox CinderReedGrove_Text_LampBAlreadyOn, MSGBOX_DEFAULT
+	release
+	end
+
+CinderReedGrove_EventScript_NorthPathTrigger::
+	lockall
+	goto_if_set FLAG_BEACONFALL_GROVE_LAMP_A, CinderReedGrove_EventScript_NorthPathCheckB
+	goto CinderReedGrove_EventScript_NorthPathBlock
+
+CinderReedGrove_EventScript_NorthPathCheckB::
+	goto_if_set FLAG_BEACONFALL_GROVE_LAMP_B, CinderReedGrove_EventScript_NorthPathAllow
+CinderReedGrove_EventScript_NorthPathBlock::
+	msgbox CinderReedGrove_Text_BeaconsStillDark, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, CinderReedGrove_Movement_PushSouthFromNorth
+	waitmovement 0
+	releaseall
+	end
+
+CinderReedGrove_EventScript_NorthPathAllow::
+	releaseall
+	end
+
+CinderReedGrove_Movement_PushSouthFromNorth::
+	walk_down
+	step_end
+
 CinderReedGrove_EventScript_GroveSign::
 	msgbox CinderReedGrove_Text_GroveSign, MSGBOX_SIGN
 	end
@@ -97,15 +152,37 @@ CinderReedGrove_Text_ReedAfter::
 	.string "Watch for it.$"
 
 CinderReedGrove_Text_MossIntro::
-	.string "I came here to see the grove glow.$"
+	.string "SMUGGLER: Quiet. Haul the coil before the\n"
+	.string "rangers trace the signal.$"
 
 CinderReedGrove_Text_MossDefeat::
-	.string "I saw that battle coming too late!$"
+	.string "The beacon bundle's heavier than it looks...$"
 
 CinderReedGrove_Text_MossAfter::
-	.string "The lights in the trees are a clue.\n"
-	.string "Don't ignore them.$"
+	.string "Those lamps copy harbor pulse frequencies.\n"
+	.string "Someone upstream is fencing whole spires.$"
+
+CinderReedGrove_Text_LampAOn::
+	.string "The creek-side beacon hums -threads of moss\n"
+	.string "that glow like harbor glass.$"
+
+CinderReedGrove_Text_LampAAlreadyOn::
+	.string "This lantern already rides the same beat as\n"
+	.string "the failed coastal network.$"
+
+CinderReedGrove_Text_LampBOn::
+	.string "The hollow lantern answers the first one.\n"
+	.string "The reed-line finally reads as a path.$"
+
+CinderReedGrove_Text_LampBAlreadyOn::
+	.string "Twin beacons stay tuned. Listen. They tick in\n"
+	.string "sync when the wind drops.$"
+
+CinderReedGrove_Text_BeaconsStillDark::
+	.string "The northern reed-wall is black without both\n"
+	.string "beacon lamps burning.$"
 
 CinderReedGrove_Text_GroveSign::
 	.string "CINDER REED GROVE\p"
-	.string "Quiet paths, bright leaves.$"
+	.string "Harbor lamps once lined this route. Now\n"
+	.string "smugglers borrow the light.$"
