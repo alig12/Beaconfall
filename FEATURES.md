@@ -3,9 +3,15 @@
 This page documents the engine features Beaconfall inherits from `pokeemerald-expansion`.
 Use it as a reference for the systems available to the game project.
 
+## Beaconfall Chapter Progress
+
+- Chapter 1 establishes the early route chain into Brassfall City and the first gym reset flow.
+- Chapter 2 adds Saltwind Coast, Floodgate Tunnels, Lumenport City, Astral Tide Gym, chapter-scoped reset hooks, water-level state, and the Surf unlock reward.
+
 ## Table of Contents
 
 - [What features are included?](#what-features-are-included)
+  - [Beaconfall Chapter Progress](#beaconfall-chapter-progress)
   - [Table of Contents](#table-of-contents)
   - [Configuration files](#configuration-files)
   - [Upgraded Battle Engine](#upgraded-battle-engine)

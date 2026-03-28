@@ -868,13 +868,22 @@
 #define TRAINER_BEACONFALL_GYM_LAMP         861
 #define TRAINER_BEACONFALL_GYM_BEAM         862
 #define TRAINER_BEACONFALL_LEADER           863
+#define TRAINER_BEACONFALL_COAST_SCOUT      864
+#define TRAINER_BEACONFALL_COAST_BREAKER    865
+#define TRAINER_BEACONFALL_FLOODGATE_ENGINEER 866
+#define TRAINER_BEACONFALL_FLOODGATE_WORKER 867
+#define TRAINER_BEACONFALL_RIVAL3           868
+#define TRAINER_BEACONFALL_GYM_TIDE         869
+#define TRAINER_BEACONFALL_GYM_SURGE        870
+#define TRAINER_BEACONFALL_GYM_MOON         871
+#define TRAINER_BEACONFALL_LEADER2          872
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT_EMERALD     864
-#define MAX_TRAINERS_COUNT_EMERALD 864
+#define TRAINERS_COUNT_EMERALD     873
+#define MAX_TRAINERS_COUNT_EMERALD 873
 
 #if IS_FRLG
 #define TRAINERS_COUNT                      TRAINERS_COUNT_FRLG

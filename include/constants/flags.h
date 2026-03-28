@@ -669,15 +669,15 @@
 #define FLAG_CINDER_REED_GROVE_CLEARED   0x266
 #define FLAG_BRASSFALL_CITY_ENTERED      0x267
 #define FLAG_CHAPTER_1_COMPLETE          0x268
-#define FLAG_UNUSED_0x269                0x269 // Unused Flag
-#define FLAG_UNUSED_0x26A  0x26A // Unused Flag
-#define FLAG_UNUSED_0x26B  0x26B // Unused Flag
-#define FLAG_UNUSED_0x26C  0x26C // Unused Flag
-#define FLAG_UNUSED_0x26D  0x26D // Unused Flag
-#define FLAG_UNUSED_0x26E  0x26E // Unused Flag
-#define FLAG_UNUSED_0x26F  0x26F // Unused Flag
-#define FLAG_UNUSED_0x270  0x270 // Unused Flag
-#define FLAG_UNUSED_0x271  0x271 // Unused Flag
+#define FLAG_FLOODGATE_VALVE_A           0x269
+#define FLAG_FLOODGATE_VALVE_B           0x26A
+#define FLAG_FLOODGATE_VALVE_C           0x26B
+#define FLAG_SALTWIND_COAST_CLEARED      0x26C
+#define FLAG_FLOODGATE_TUNNELS_CLEARED   0x26D
+#define FLAG_RIVAL2_DONE                 0x26E
+#define FLAG_GYM2_CLEARED                0x26F
+#define FLAG_SURF_UNLOCKED               0x270
+#define FLAG_CHAPTER_2_COMPLETE          0x271
 #define FLAG_UNUSED_0x272  0x272 // Unused Flag
 #define FLAG_UNUSED_0x273  0x273 // Unused Flag
 #define FLAG_UNUSED_0x274  0x274 // Unused Flag

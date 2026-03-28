@@ -864,6 +864,12 @@
     "BrassfallCity",
     "ForteHallGym"
   ],
+  "gMapGroup_BeaconfallChapter2": [
+    "SaltwindCoast",
+    "FloodgateTunnels",
+    "LumenportCity",
+    "AstralTideGym"
+  ],
   "gMapGroup_TownsAndRoutes_Frlg": [
     "PalletTown_Frlg",
     "ViridianCity_Frlg",
