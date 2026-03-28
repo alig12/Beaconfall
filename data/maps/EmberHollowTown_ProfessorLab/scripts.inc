@@ -31,6 +31,16 @@ EmberHollowTown_ProfessorLab_EventScript_Mira::
 	goto_if_set FLAG_BEACONFALL_TUTORIAL_RIVAL_BEATEN, EmberHollowTown_ProfessorLab_EventScript_MiraAfter
 	goto_if_unset FLAG_SYS_POKEMON_GET, EmberHollowTown_ProfessorLab_EventScript_MiraBeforeStarter
 	special HealPlayerParty
+	msgbox EmberHollowTown_ProfessorLab_Text_MiraIntroUrgent, MSGBOX_DEFAULT
+	playse SE_PSYCH_UP
+	applymovement LOCALID_MIRA, EmberHollowTown_Movement_MiraStepCloser
+	waitmovement 0
+	delay 15
+	playse SE_THUNDERBOLT
+	doshake 3, 2
+	delay 10
+	msgbox EmberHollowTown_ProfessorLab_Text_MiraIntroAlarm, MSGBOX_DEFAULT
+	delay 10
 	switch VAR_STARTER_MON
 	case 0, EmberHollowTown_ProfessorLab_EventScript_MiraBattleBudew
 	case 1, EmberHollowTown_ProfessorLab_EventScript_MiraBattleGrowlithe
@@ -41,6 +51,11 @@ EmberHollowTown_ProfessorLab_EventScript_MiraBeforeStarter::
 	msgbox EmberHollowTown_ProfessorLab_Text_MiraBeforeStarter, MSGBOX_DEFAULT
 	release
 	end
+
+EmberHollowTown_Movement_MiraStepCloser::
+	walk_right
+	walk_right
+	step_end
 
 EmberHollowTown_ProfessorLab_EventScript_MiraBattleBudew::
 	trainerbattle_single TRAINER_BEACONFALL_RIVAL1_CHIMCHAR, EmberHollowTown_ProfessorLab_Text_MiraIntro, EmberHollowTown_ProfessorLab_Text_MiraDefeat, EmberHollowTown_ProfessorLab_EventScript_MiraDefeated
@@ -67,16 +82,18 @@ EmberHollowTown_ProfessorLab_EventScript_MiraAfter::
 	end
 
 EmberHollowTown_ProfessorLab_Text_Intro::
-	.string "PROF. BIRCH: The beacons just failed. All of\n"
-	.string "them along the coast.\p"
-	.string "This blackout isn't just spooky. Wild\n"
-	.string "Pokémon are panicking in the dark.\p"
-	.string "Take a partner. Saltwind Path won't wait.$"
+	.string "PROF. BIRCH: The beacons just failed. All\n"
+	.string "of them along the coast.\p"
+	.string "That network held back the worst of the\n"
+	.string "wild Pokémon. Without it, the dark roads\l"
+	.string "aren't safe for untested trainers.\p"
+	.string "You need a partner. Now.$"
 
 EmberHollowTown_ProfessorLab_Text_StarterDone::
-	.string "PROF. BIRCH: Good. That light on your belt\n"
+	.string "PROF. BIRCH: Good. That Pokédex light\n"
 	.string "means you're official.\p"
-	.string "MIRA has been pacing. She'll want a word.$"
+	.string "MIRA's been pacing. She'll want proof\n"
+	.string "you can handle yourself.$"
 
 EmberHollowTown_ProfessorLab_Text_SeeMira::
 	.string "Talk to MIRA by the desk when you're ready.$"
@@ -93,6 +110,16 @@ EmberHollowTown_ProfessorLab_Text_AfterTutorial::
 EmberHollowTown_ProfessorLab_Text_MiraBeforeStarter::
 	.string "MIRA: Birch is handling starters first.\n"
 	.string "No debates until you've got one.$"
+
+EmberHollowTown_ProfessorLab_Text_MiraIntroUrgent::
+	.string "MIRA: Alright, listen up!\p"
+	.string "We don't have time to waste with this\n"
+	.string "blackout getting worse every minute.$"
+
+EmberHollowTown_ProfessorLab_Text_MiraIntroAlarm::
+	.string "MIRA: One quick test to see if you can\n"
+	.string "handle a real battle.\l"
+	.string "Stay sharp!$"
 
 EmberHollowTown_ProfessorLab_Text_MiraIntro::
 	.string "MIRA: Finally, one quick bout. Stay on your\n"

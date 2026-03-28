@@ -87,14 +87,15 @@ EmberHollowTown_Text_BlackoutIntro::
 	.string "network failed, and the whole town went dim.$"
 
 EmberHollowTown_Text_NeedPokemon::
-	.string "GUARD: Nobody crosses Saltwind during a\n"
-	.string "blackout without a Pokémon.\p"
-	.string "Prof. BIRCH is at the lab. Move.$"
+	.string "GUARD: The route's dark. No way I'm\n"
+	.string "letting you cross without a Pokémon.\p"
+	.string "PROF. BIRCH's at the lab. Get one first.$"
 
 EmberHollowTown_Text_NeedMiraBattle::
-	.string "GUARD: You got a Pokémon -good. But I saw\n"
-	.string "MIRA still pacing by the lab windows.\p"
-	.string "Finish your business with her first.$"
+	.string "GUARD: You've got a Pokémon now.\p"
+	.string "But MIRA doesn't let rookies waltz past\n"
+	.string "the gates. She's testing everyone.\l"
+	.string "Handle her first, then we talk.$"
 
 EmberHollowTown_Text_GuardNeedMon::
 	.string "GUARD: Lab first. BIRCH doesn't hand out\n"
@@ -106,8 +107,11 @@ EmberHollowTown_Text_GuardNeedMira::
 
 EmberHollowTown_Text_GuardAllClear::
 	.string "GUARD: Lights are still out, but you've got\n"
-	.string "what you need. Watch the tall grass.$"
+	.string "what it takes.\p"
+	.string "Saltwind Path's a mess in the dark.\n"
+	.string "Watch for wild Pokémon.$"
 
 EmberHollowTown_Text_TownSign::
 	.string "EMBER HOLLOW\p"
-	.string "Harbor spark of Beaconfall.$"
+	.string "Harbor spark of Beaconfall.\p"
+	.string "[BEACON NETWORK STATUS: OFFLINE]$"
