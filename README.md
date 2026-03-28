@@ -51,3 +51,37 @@ If you are looking to [report a bug](CONTRIBUTING.md#Bug-Report), [open a pull r
 [![](https://dcbadge.limes.pink/api/server/6CzjAG6GZk)](https://discord.gg/6CzjAG6GZk)
 
 Our community uses the [ROM Hacking Hideout (RHH) Discord server](https://discord.gg/6CzjAG6GZk) to communicate and organize. Most of our discussions take place there, and we welcome anybody to join us!
+
+<!-- docs-overview:start -->
+## Documentation index (auto-generated)
+
+This section lists discovered Markdown docs in this repository. Nested `docs/` content is summarized by [`docs/SUMMARY.md`](docs/SUMMARY.md) (subtree short-circuit).
+
+### Repository root
+
+- [Beaconfall Spec Kit Prompts](BEACONFALL_SPEC_KIT_PROMPTS.md) — Markdown document in this repository.
+- [Pokeemerald-Expansion Changelogs](CHANGELOG.md) — Index of release notes with links into `docs/changelogs/`.
+- [Contributing to pokeemerald-expansion](CONTRIBUTING.md) — First off, thanks for helping improve `pokeemerald-expansion`! ❤️
+- [Credits ✨](CREDITS.md) — Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+- [What features are included?](FEATURES.md) — A lot of features listed below can be turned off as desired. Check which ones in these files
+- [Pokémon Beaconfall — Chapter 1 Design + Spec Kit SDD Prompt Pack](FIRST_CHAPTER_PLAN.md) — This project is a **new, original Pokémon fan game** built as a **GBA ROM hack** on top of `pokeemerald-expansion`.
+- [Instructions](INSTALL.md) — Install instructions for each supported operating system can be found in their respective directories under `docs/install/`. Lines to those can be found under each heading. This file only contains a short introduction to each supported…
+- [RESEARCH](RESEARCH.md) — Architectural specification and forensic analysis of successful Pokémon fan-game projects; scope and engine patterns for long-running ROM hack development.
+
+### .github
+
+- [Description](.github/pull_request_template.md) — <!-- Detail the changes made, why they were made, and any important context. -->
+
+### docs
+
+- [Summary](docs/SUMMARY.md) — Navigation outline for the `docs/` tree: install guides, tutorials, team procedures, and version changelogs.
+
+### migration_scripts
+
+- [Migration Scripts](migration_scripts/README.md) — pokeemerald-expansion rewrites existing systems in pokeemerald to improve their efficiency and make them easier to use and implement for developers. If developers were previously using a system that has been deprecated, it can be…
+
+### tools
+
+- [mGBA](tools/mgba/README.md) — The binaries in this folder are built from `mGBA`, an emulator for running Game Boy Advance games. The source code is available here: <https://github.com/mgba-emu/mgba>. The source code for these specific builds is available from:
+- [wav2agb](tools/wav2agb/README.md) — "wav2agb" is a tool to convert standard .wav files to GBA compatible .s or .bin files.  Intended to convert .wav files for the use with the mp2k/m4a sound driver.
+<!-- docs-overview:end -->
