@@ -1,5 +1,10 @@
 # What features are included?
+
+This page documents the engine features Beaconfall inherits from `pokeemerald-expansion`.
+Use it as a reference for the systems available to the game project.
+
 ## Table of Contents
+
 - [What features are included?](#what-features-are-included)
   - [Table of Contents](#table-of-contents)
   - [Configuration files](#configuration-files)
