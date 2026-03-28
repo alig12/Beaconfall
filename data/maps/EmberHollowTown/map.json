@@ -21,6 +21,7 @@
   ],
   "object_events": [
     {
+      "local_id": "LOCALID_EMBER_GATE_A",
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
       "x": 10,
@@ -35,6 +36,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_EMBER_GATE_B",
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
       "x": 11,

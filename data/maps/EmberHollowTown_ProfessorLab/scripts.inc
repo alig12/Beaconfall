@@ -31,11 +31,11 @@ EmberHollowTown_ProfessorLab_EventScript_Mira::
 	goto_if_set FLAG_BEACONFALL_TUTORIAL_RIVAL_BEATEN, EmberHollowTown_ProfessorLab_EventScript_MiraAfter
 	goto_if_unset FLAG_BEACONFALL_STARTER_SELECTED, EmberHollowTown_ProfessorLab_EventScript_MiraBeforeStarter
 	special HealPlayerParty
+	@ Mira starts beside the Professor; face the player for the challenge (no walk-in snap)
+	turnobject LOCALID_MIRA, DIR_SOUTH
 	msgbox EmberHollowTown_ProfessorLab_Text_MiraIntroUrgent, MSGBOX_DEFAULT
 	playse SE_M_CHARGE
-	applymovement LOCALID_MIRA, EmberHollowTown_Movement_MiraStepCloser
-	waitmovement 0
-	delay 15
+	delay 10
 	playse SE_M_THUNDERBOLT
 	setvar VAR_0x8004, 1
 	setvar VAR_0x8005, 1
@@ -56,11 +56,6 @@ EmberHollowTown_ProfessorLab_EventScript_MiraBeforeStarter::
 	release
 	end
 
-EmberHollowTown_Movement_MiraStepCloser::
-	walk_right
-	walk_right
-	step_end
-
 EmberHollowTown_ProfessorLab_EventScript_MiraBattleTurtwig::
 	trainerbattle_single TRAINER_BEACONFALL_RIVAL1_CHIMCHAR, EmberHollowTown_ProfessorLab_Text_MiraIntro, EmberHollowTown_ProfessorLab_Text_MiraDefeat, EmberHollowTown_ProfessorLab_EventScript_MiraDefeated
 	end
@@ -76,6 +71,7 @@ EmberHollowTown_ProfessorLab_EventScript_MiraBattlePiplup::
 EmberHollowTown_ProfessorLab_EventScript_MiraDefeated::
 	setflag FLAG_BEACONFALL_TUTORIAL_RIVAL_BEATEN
 	setvar VAR_RIVAL_BATTLES, 1
+	setvar VAR_BEACONFALL_EMBER_TWIN_CUTSCENE, 0
 	msgbox EmberHollowTown_ProfessorLab_Text_MiraAfter, MSGBOX_DEFAULT
 	release
 	end
@@ -93,12 +89,12 @@ EmberHollowTown_ProfessorLab_Text_Intro::
 
 EmberHollowTown_ProfessorLab_Text_StarterDone::
 	.string "BIRCH: Good. It's yours now.\p"
-	.string "MIRA's by the desk.\p"
-	.string "Go show her what you can do.$"
+	.string "MIRA's right here with me.\p"
+	.string "Talk to her when you're ready.$"
 
 EmberHollowTown_ProfessorLab_Text_SeeMira::
-	.string "MIRA's by the desk.\p"
-	.string "Talk to her when ready.$"
+	.string "MIRA's waiting with me.\p"
+	.string "She'll test you when you're ready.$"
 
 EmberHollowTown_ProfessorLab_Text_TalkToMira::
 	.string "BIRCH: MIRA doesn't waste time.\p"

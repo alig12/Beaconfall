@@ -674,7 +674,7 @@
 #define FLAG_BEACONFALL_TUTORIAL_RIVAL_BEATEN 0x26B
 #define FLAG_BEACONFALL_GROVE_LAMP_A       0x26C
 #define FLAG_BEACONFALL_GROVE_LAMP_B       0x26D
-#define FLAG_UNUSED_0x26E  0x26E // Unused Flag
+#define FLAG_EMBER_NORTH_GATE_TWIN_MOVED   0x26E // One twin stepped aside; path to Route 1 unblocked
 #define FLAG_UNUSED_0x26F  0x26F // Unused Flag
 #define FLAG_UNUSED_0x270  0x270 // Unused Flag
 #define FLAG_UNUSED_0x271  0x271 // Unused Flag

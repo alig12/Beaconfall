@@ -11,17 +11,12 @@ EmberHollowTown_PlayersHouse_1F_EventScript_Mom::
 
 EmberHollowTown_PlayersHouse_1F_EventScript_MomHeal::
 	msgbox EmberHollowTown_PlayersHouse_1F_Text_MomHealingOffer, MSGBOX_DEFAULT
-	call EmberHollowTown_PlayersHouse_1F_EventScript_PerformHealing
+	closemessage
+	@ Home rest (same pattern as vanilla PlayersHouse / Pallet Mom): fade + heal fanfare, no Pokécenter ball animation
+	call Common_EventScript_OutOfCenterPartyHeal
 	msgbox EmberHollowTown_PlayersHouse_1F_Text_MomHealed, MSGBOX_DEFAULT
 	release
 	end
-
-EmberHollowTown_PlayersHouse_1F_EventScript_PerformHealing::
-	playfanfare MUS_HEAL
-	dofieldeffect FLDEFF_POKECENTER_HEAL
-	waitfieldeffect FLDEFF_POKECENTER_HEAL
-	special HealPlayerParty
-	return
 
 EmberHollowTown_PlayersHouse_1F_Text_MomWaitingForNews::
 	.string "MOM: I was worried when the\n"

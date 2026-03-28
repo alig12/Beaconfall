@@ -19,6 +19,7 @@ EmberHollowTown_OnTransition_Bright::
 
 EmberHollowTown_OnFrame::
 	map_script_2 VAR_BEACONFALL_BLACKOUT_MSG, 0, EmberHollowTown_EventScript_BlackoutIntroOnce
+	map_script_2 VAR_BEACONFALL_EMBER_TWIN_CUTSCENE, 0, EmberHollowTown_EventScript_TwinStepAsideOnce
 	.2byte 0
 
 EmberHollowTown_EventScript_BlackoutIntroOnce::
@@ -29,6 +30,35 @@ EmberHollowTown_EventScript_BlackoutIntroDone::
 	setvar VAR_BEACONFALL_BLACKOUT_MSG, 1
 	releaseall
 	end
+
+@ After the lab rival battle, one gate twin steps aside (VAR reset in Mira defeat script if player deferred earlier)
+EmberHollowTown_EventScript_TwinStepAsideOnce::
+	lockall
+	goto_if_set FLAG_EMBER_NORTH_GATE_TWIN_MOVED, EmberHollowTown_EventScript_TwinStepAside_Finish
+	goto_if_eq VAR_BEACONFALL_BLACKOUT_MSG, 0, EmberHollowTown_EventScript_TwinStepAside_Release
+	goto_if_unset FLAG_BEACONFALL_TUTORIAL_RIVAL_BEATEN, EmberHollowTown_EventScript_TwinStepAsideDefer
+	applymovement LOCALID_EMBER_GATE_B, Movement_EmberHollowTown_TwinGateBStepAside
+	waitmovement 0
+	playse SE_EXIT
+	setflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
+EmberHollowTown_EventScript_TwinStepAside_Finish::
+	setvar VAR_BEACONFALL_EMBER_TWIN_CUTSCENE, 1
+	releaseall
+	end
+
+EmberHollowTown_EventScript_TwinStepAsideDefer::
+	setvar VAR_BEACONFALL_EMBER_TWIN_CUTSCENE, 1
+	releaseall
+	end
+
+EmberHollowTown_EventScript_TwinStepAside_Release::
+	releaseall
+	end
+
+Movement_EmberHollowTown_TwinGateBStepAside::
+	walk_left
+	walk_left
+	step_end
 
 EmberHollowTown_EventScript_NorthGateTrigger::
 	lockall
