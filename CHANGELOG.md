@@ -1,4 +1,13 @@
-# Pokeemerald-Expansion Changelogs
+# Beaconfall Changelog
+
+Beaconfall-specific milestones are listed first. The inherited engine release history remains below
+for reference.
+
+## Beaconfall Milestones
+
+- 2026-03-28 - Implemented Chapter 2's coast-to-gym progression, including the Saltwind Coast, Floodgate Tunnels, Lumenport City, Astral Tide Gym, and Surf unlock flow.
+- 2026-03-28 - Refocused the repo docs on Beaconfall and added the Chapter 1 scaffold.
+- 2026-03-28 - Added the Beaconfall project docs hub and repo-facing documentation refresh.
 
 ## 1.10.x
 - **[Version 1.10.2](docs/changelogs/1.10.x/1.10.2.md) - 🧹 Bugfix Release**

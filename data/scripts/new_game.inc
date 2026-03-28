@@ -273,6 +273,7 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_SKY_PILLAR_WALLACE
 	setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL
 	call BeaconfallChapter1_EventScript_ResetProgress
+	call BeaconfallChapter2_EventScript_ResetProgress
 	call EventScript_ResetAllBerries
 	end
 

@@ -1,10 +1,15 @@
-# Instructions
-Install instructions for each supported operating system can be found in their respective directories under `docs/install/`.
+# Beaconfall Setup
+
+Beaconfall is a new ROM hack built on `pokeemerald-expansion`. The install and build flow below
+uses the same engine toolchain, but all repository paths point at the Beaconfall fork.
+
+Install instructions for each supported operating system can be found in their respective
+directories under `docs/install/`.
 Lines to those can be found under each heading.
 This file only contains a short introduction to each supported system.
 If you run into trouble, ask for help on Discord (see [README.md](README.md)).
 
-After completing the install instructions for your OS, proceed to [Building pokeemerald-expansion](#building-pokeemerald-expansion).
+After completing the install instructions for your OS, proceed to [Building Beaconfall](#building-beaconfall).
 
 ## Windows
 **Windows needs one of the systems to build the project**
@@ -46,18 +51,18 @@ Only tested on x86_64 based systems.
 
 [Chrome OS instructions](docs/install/chromeos/CHROME_OS.md)
 
-# Building pokeemerald-expansion
-Follow these steps to build `pokeemerald-expansion`.
+# Building Beaconfall
+Follow these steps to build `Beaconfall`.
 1. Navigate to the directory you want to keep the project in, be aware of any system specific limitations.
 2. Download `pokeemerald-expansion` with `git`
 
     ```console
-    git clone https://github.com/rh-hideout/pokeemerald-expansion
+    git clone https://github.com/alig12/Beaconfall
     ```
 3. Navigate to the newly downloaded project.
 
     ```console
-    cd pokeemerald-expansion
+    cd Beaconfall
     ```
 4. Build the project.
 

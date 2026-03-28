@@ -38,6 +38,25 @@ BrassfallCity_EventScript_Healer::
 	release
 	end
 
+BrassfallCity_EventScript_CoastGuide::
+	lock
+	faceplayer
+	goto_if_set FLAG_CHAPTER_1_COMPLETE, BrassfallCity_EventScript_CoastGuideOpen
+	msgbox BrassfallCity_Text_CoastBlocked, MSGBOX_DEFAULT
+	release
+	end
+
+BrassfallCity_EventScript_CoastGuideOpen::
+	goto_if_set FLAG_SALTWIND_COAST_CLEARED, BrassfallCity_EventScript_CoastGuideAfter
+	msgbox BrassfallCity_Text_CoastOpen, MSGBOX_DEFAULT
+	release
+	end
+
+BrassfallCity_EventScript_CoastGuideAfter::
+	msgbox BrassfallCity_Text_CoastAfter, MSGBOX_DEFAULT
+	release
+	end
+
 BrassfallCity_EventScript_CitySign::
 	msgbox BrassfallCity_Text_CitySign, MSGBOX_SIGN
 	end
@@ -66,6 +85,19 @@ BrassfallCity_Text_GymGuideOpen::
 BrassfallCity_Text_Healer::
 	.string "You look ready for a rest.\p"
 	.string "Let me patch up your team.$"
+
+BrassfallCity_Text_CoastBlocked::
+	.string "The east road is closed for now.\p"
+	.string "Finish your badge work first.$"
+
+BrassfallCity_Text_CoastOpen::
+	.string "Saltwind Coast is open east now.\p"
+	.string "Choose your lane and keep moving.$"
+
+BrassfallCity_Text_CoastAfter::
+	.string "The coast leads on to the floodgate\n"
+	.string "tunnels.\p"
+	.string "Stay ready for the next shift.$"
 
 BrassfallCity_Text_CitySign::
 	.string "BRASSFALL CITY\p"
