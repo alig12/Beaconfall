@@ -3,7 +3,6 @@ EmberHollowTown_MapScripts::
 	.byte 0
 
 EmberHollowTown_OnTransition::
-	setworldmapflag FLAG_WORLD_MAP_LITTLEROOT_TOWN
 	end
 
 EmberHollowTown_EventScript_Professor::

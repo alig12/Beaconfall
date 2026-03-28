@@ -3,7 +3,6 @@ CinderReedGrove_MapScripts::
 	.byte 0
 
 CinderReedGrove_OnTransition::
-	setworldmapflag FLAG_WORLD_MAP_VIRIDIAN_FOREST
 	end
 
 CinderReedGrove_EventScript_Gatekeeper::

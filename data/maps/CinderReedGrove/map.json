@@ -1,9 +1,9 @@
 {
   "id": "MAP_CINDER_REED_GROVE",
   "name": "CinderReedGrove",
-  "layout": "LAYOUT_VIRIDIAN_FOREST",
+  "layout": "LAYOUT_PETALBURG_WOODS",
   "music": "MUS_ROUTE101",
-  "region_map_section": "MAPSEC_VIRIDIAN_FOREST",
+  "region_map_section": "MAPSEC_CINDER_REED_GROVE",
   "requires_flash": false,
   "weather": "WEATHER_SHADE",
   "map_type": "MAP_TYPE_ROUTE",

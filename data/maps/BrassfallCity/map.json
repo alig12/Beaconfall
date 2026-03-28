@@ -1,9 +1,9 @@
 {
   "id": "MAP_BRASSFALL_CITY",
   "name": "BrassfallCity",
-  "layout": "LAYOUT_VIRIDIAN_CITY",
+  "layout": "LAYOUT_OLDALE_TOWN",
   "music": "MUS_RG_PEWTER",
-  "region_map_section": "MAPSEC_VIRIDIAN_CITY",
+  "region_map_section": "MAPSEC_BRASSFALL_CITY",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
   "map_type": "MAP_TYPE_TOWN",

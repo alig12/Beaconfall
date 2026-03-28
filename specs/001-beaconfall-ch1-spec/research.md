@@ -59,7 +59,7 @@ rather than contract files.
 ## Decision 5: Lock the battle and map scope early
 
 **Decision**: Keep the chapter fixed to five maps, two rival battles, one badge, and the
-Growlithe / Wooper / Budew starter trio.
+Turtwig / Chimchar / Piplup starter trio.
 
 **Rationale**: The spec and constitution both depend on a small, testable Chapter 1 slice.
 Locking the scope now prevents late design drift and keeps release criteria realistic.

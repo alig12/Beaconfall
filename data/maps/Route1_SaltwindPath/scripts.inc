@@ -3,18 +3,35 @@ Route1_SaltwindPath_MapScripts::
 	.byte 0
 
 Route1_SaltwindPath_OnTransition::
-	setworldmapflag FLAG_WORLD_MAP_ROUTE101
 	end
 
 Route1_SaltwindPath_EventScript_RivalBattle::
 	lockall
-	trainerbattle_single TRAINER_BEACONFALL_RIVAL1, Route1_SaltwindPath_Text_RivalIntro, Route1_SaltwindPath_Text_RivalDefeat, Route1_SaltwindPath_EventScript_RivalBattleDefeated
-	releaseall
+	switch VAR_STARTER_MON
+	case 0, Route1_SaltwindPath_EventScript_RivalBattleChimchar
+	case 1, Route1_SaltwindPath_EventScript_RivalBattlePiplup
+	case 2, Route1_SaltwindPath_EventScript_RivalBattleTurtwig
+	end
+
+Route1_SaltwindPath_EventScript_RivalBattleChimchar::
+	trainerbattle_single TRAINER_BEACONFALL_RIVAL1_CHIMCHAR, Route1_SaltwindPath_Text_RivalIntro, Route1_SaltwindPath_Text_RivalDefeat
+	goto Route1_SaltwindPath_EventScript_RivalBattleDefeated
+	end
+
+Route1_SaltwindPath_EventScript_RivalBattlePiplup::
+	trainerbattle_single TRAINER_BEACONFALL_RIVAL1_PIPLUP, Route1_SaltwindPath_Text_RivalIntro, Route1_SaltwindPath_Text_RivalDefeat
+	goto Route1_SaltwindPath_EventScript_RivalBattleDefeated
+	end
+
+Route1_SaltwindPath_EventScript_RivalBattleTurtwig::
+	trainerbattle_single TRAINER_BEACONFALL_RIVAL1_TURTWIG, Route1_SaltwindPath_Text_RivalIntro, Route1_SaltwindPath_Text_RivalDefeat
+	goto Route1_SaltwindPath_EventScript_RivalBattleDefeated
 	end
 
 Route1_SaltwindPath_EventScript_RivalBattleDefeated::
 	call BeaconfallChapter1_EventScript_MarkRoute1Cleared
 	msgbox Route1_SaltwindPath_Text_RivalAfter, MSGBOX_AUTOCLOSE
+	releaseall
 	end
 
 Route1_SaltwindPath_EventScript_Gatekeeper::

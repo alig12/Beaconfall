@@ -859,22 +859,26 @@
 #define TRAINER_LEAF                        852
 #define TRAINER_BRENDAN_PLACEHOLDER         853
 #define TRAINER_MAY_PLACEHOLDER             854
-#define TRAINER_BEACONFALL_RIVAL1           855
-#define TRAINER_BEACONFALL_RIVAL2           856
-#define TRAINER_BEACONFALL_ROUTE_SCOUT      857
-#define TRAINER_BEACONFALL_ROUTE_SAILOR     858
-#define TRAINER_BEACONFALL_GROVE_REED       859
-#define TRAINER_BEACONFALL_GROVE_MOSS       860
-#define TRAINER_BEACONFALL_GYM_LAMP         861
-#define TRAINER_BEACONFALL_GYM_BEAM         862
-#define TRAINER_BEACONFALL_LEADER           863
+#define TRAINER_BEACONFALL_RIVAL1_CHIMCHAR  855
+#define TRAINER_BEACONFALL_RIVAL1_PIPLUP    856
+#define TRAINER_BEACONFALL_RIVAL1_TURTWIG   857
+#define TRAINER_BEACONFALL_RIVAL2_CHIMCHAR  858
+#define TRAINER_BEACONFALL_RIVAL2_PIPLUP    859
+#define TRAINER_BEACONFALL_RIVAL2_TURTWIG   860
+#define TRAINER_BEACONFALL_ROUTE_SCOUT      861
+#define TRAINER_BEACONFALL_ROUTE_SAILOR     862
+#define TRAINER_BEACONFALL_GROVE_REED       863
+#define TRAINER_BEACONFALL_GROVE_MOSS       864
+#define TRAINER_BEACONFALL_GYM_LAMP         865
+#define TRAINER_BEACONFALL_GYM_BEAM         866
+#define TRAINER_BEACONFALL_LEADER           867
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT_EMERALD     864
-#define MAX_TRAINERS_COUNT_EMERALD 864
+#define TRAINERS_COUNT_EMERALD     868
+#define MAX_TRAINERS_COUNT_EMERALD 868
 
 #if IS_FRLG
 #define TRAINERS_COUNT                      TRAINERS_COUNT_FRLG

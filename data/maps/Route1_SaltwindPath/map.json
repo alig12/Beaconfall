@@ -3,7 +3,7 @@
   "name": "Route1_SaltwindPath",
   "layout": "LAYOUT_ROUTE101",
   "music": "MUS_ROUTE101",
-  "region_map_section": "MAPSEC_ROUTE_101",
+  "region_map_section": "MAPSEC_SALTWIND_PATH",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
   "map_type": "MAP_TYPE_ROUTE",

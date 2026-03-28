@@ -12,7 +12,7 @@ designed to be deterministic, save-safe, and easy to validate.
 
 |Field|Type|Purpose|
 |---|---|---|
-|`starter_choice`|enum(`Growlithe`,`Wooper`,`Budew`)|Records the chosen starter.|
+|`starter_choice`|enum(`Turtwig`,`Chimchar`,`Piplup`)|Records the chosen starter.|
 |`route_1_cleared`|bool|Marks the route traversal beat as complete.|
 |`cinder_reed_grove_cleared`|bool|Marks the grove beat as complete.|
 |`brassfall_city_entered`|bool|Marks city arrival.|
@@ -35,7 +35,7 @@ designed to be deterministic, save-safe, and easy to validate.
 
 |Field|Type|Purpose|
 |---|---|---|
-|`selected_species`|enum(`Growlithe`,`Wooper`,`Budew`)|Stores the chosen starter.|
+|`selected_species`|enum(`Turtwig`,`Chimchar`,`Piplup`)|Stores the chosen starter.|
 |`starter_reward_granted`|bool|Confirms the starter and opening reward were awarded.|
 |`pokedex_granted`|bool|Confirms the Pokédex was awarded during the opening.|
 
