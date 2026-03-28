@@ -120,4 +120,4 @@ EmberHollowTown_Text_GuardAllClear::
 EmberHollowTown_Text_TownSign::
 	.string "EMBER HOLLOW\p"
 	.string "Harbor spark of Beaconfall.\p"
-	.string "[BEACON NETWORK STATUS: OFFLINE]$"
+	.string "BEACON NETWORK STATUS: OFFLINE$"
