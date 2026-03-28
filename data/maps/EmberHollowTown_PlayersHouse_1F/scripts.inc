@@ -4,7 +4,7 @@ EmberHollowTown_PlayersHouse_1F_MapScripts::
 EmberHollowTown_PlayersHouse_1F_EventScript_Mom::
 	lock
 	faceplayer
-	goto_if_set FLAG_BEACONFALL_TUTORIAL_RIVAL_BEATEN, EmberHollowTown_PlayersHouse_1F_EventScript_MomHeal
+	goto_if_set FLAG_BEACONFALL_STARTER_SELECTED, EmberHollowTown_PlayersHouse_1F_EventScript_MomHeal
 	msgbox EmberHollowTown_PlayersHouse_1F_Text_MomWaitingForNews, MSGBOX_DEFAULT
 	release
 	end
@@ -33,13 +33,11 @@ EmberHollowTown_PlayersHouse_1F_Text_MomWaitingForNews::
 	.string "Please be careful if you go out.$"
 
 EmberHollowTown_PlayersHouse_1F_Text_MomHealingOffer::
-	.string "MOM: You look like you've been through\n"
-	.string "something already!\p"
-	.string "Let me help you recover. I may not have\n"
-	.string "Potions, but I can do this much for my\l"
-	.string "brave trainer.$"
+	.string "MOM: You've got your partner now.\p"
+	.string "Let me patch you up before you head back\n"
+	.string "out into the dark.$"
 
 EmberHollowTown_PlayersHouse_1F_Text_MomHealed::
 	.string "MOM: There. You're all patched up.\p"
-	.string "Stay safe out there. The world's darker\n"
-	.string "without those beacons.$"
+	.string "If the route gets rough, come back here\n"
+	.string "and I'll help again.$"

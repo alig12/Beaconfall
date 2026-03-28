@@ -8,7 +8,7 @@ This script validates Chapter 1 map integrity including:
 - Expected chapter script vars/flags
 - Absence of borrowed map metadata on outdoor maps
 - Encounter coverage (only Saltwind Path and Cinder Reed Grove; no town/gym tables)
-- Saltwild Path wild species limited to Pidgey, Zigzagoon, Wurmple
+- Saltwind Path wild species limited to Pidgey, Zigzagoon, Wurmple
 """
 
 import json
@@ -224,10 +224,12 @@ def validate_expected_vars():
     content = chapter_script.read_text()
     
     required_patterns = [
+        r"FLAG_BEACONFALL_STARTER_SELECTED",
         r"VAR_RIVAL_BATTLES",
         r"VAR_GYM_LIGHT_STATE",
         r"FLAG_ROUTE_1_CLEARED",
-        r"FLAG_CINDER_REED_GROVE_CLEARED"
+        r"FLAG_CINDER_REED_GROVE_CLEARED",
+        r"VAR_BEACONFALL_BLACKOUT_MSG"
     ]
     
     all_found = True

@@ -32,7 +32,7 @@ EmberHollowTown_EventScript_BlackoutIntroDone::
 
 EmberHollowTown_EventScript_NorthGateTrigger::
 	lockall
-	goto_if_set FLAG_SYS_POKEMON_GET, EmberHollowTown_EventScript_NorthGateCheckTutorial
+	goto_if_set FLAG_BEACONFALL_STARTER_SELECTED, EmberHollowTown_EventScript_NorthGateCheckTutorial
 	goto EmberHollowTown_EventScript_ForceBackNeedLab
 
 EmberHollowTown_EventScript_NorthGateCheckTutorial::
@@ -61,7 +61,7 @@ Movement_EmberHollowTown_GatePushBack::
 EmberHollowTown_EventScript_ExitGuard::
 	lock
 	faceplayer
-	goto_if_set FLAG_SYS_POKEMON_GET, EmberHollowTown_EventScript_ExitGuardCheckTutorial
+	goto_if_set FLAG_BEACONFALL_STARTER_SELECTED, EmberHollowTown_EventScript_ExitGuardCheckTutorial
 	msgbox EmberHollowTown_Text_GuardNeedMon, MSGBOX_DEFAULT
 	release
 	end
@@ -88,21 +88,21 @@ EmberHollowTown_Text_BlackoutIntro::
 
 EmberHollowTown_Text_NeedPokemon::
 	.string "GUARD: The route's dark. No way I'm\n"
-	.string "letting you cross without a Pokémon.\p"
-	.string "PROF. BIRCH's at the lab. Get one first.$"
+	.string "letting you cross without a partner.\p"
+	.string "PROF. BIRCH is at the lab. Get one first.$"
 
 EmberHollowTown_Text_NeedMiraBattle::
-	.string "GUARD: You've got a Pokémon now.\p"
+	.string "GUARD: You've got a partner now.\p"
 	.string "But MIRA doesn't let rookies waltz past\n"
 	.string "the gates. She's testing everyone.\l"
 	.string "Handle her first, then we talk.$"
 
 EmberHollowTown_Text_GuardNeedMon::
-	.string "GUARD: Lab first. BIRCH doesn't hand out\n"
-	.string "partners for fun. It's quarantine until you.$"
+	.string "GUARD: Lab first. Birch doesn't hand out\n"
+	.string "partners for fun. Get one and come back.$"
 
 EmberHollowTown_Text_GuardNeedMira::
-	.string "GUARD: Talk to MIRA. She doesn't let rookies\n"
+	.string "GUARD: Talk to MIRA. She won't let rookies\n"
 	.string "wander until she's tested them.$"
 
 EmberHollowTown_Text_GuardAllClear::

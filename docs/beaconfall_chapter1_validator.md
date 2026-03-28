@@ -1,6 +1,6 @@
 # Beaconfall Chapter 1 Validator
 
-This page documents the Chapter 1 integrity validator and the new rare encounter species.
+This page documents the Chapter 1 integrity validator and the opening-flow guidance used alongside it.
 
 ## Running the Validator
 
@@ -31,51 +31,42 @@ make beaconfall-ch1-validate
 
 4. **Encounter Coverage**: Ensures encounters exist only on Saltwind Path and Cinder Reed Grove (no encounters on towns/gym)
 
-5. **Standout Species**: Confirms the curated rare species are present in encounters:
-   - **Saltwind Path**: Shinx (4%), Eevee (1%)
-   - **Cinder Reed Grove**: Growlithe (4%), Riolu (1%), Ralts (1%)
+5. **Opening Flow Guidance**: Confirms the player-facing opener follows the intended sequence:
+   - Blackout hook in Ember Hollow
+   - Mom intro and recovery path
+   - Professor lab starter choice
+   - Immediate Mira encounter
+   - Route 1 unlock after the tutorial rival
 
 6. **Map Metadata**: Verifies no stale borrowed flags are present from Littleroot/Viridian maps
 
 7. **Chapter Script**: Confirms expected game state variables are defined:
+   - FLAG_BEACONFALL_STARTER_SELECTED
    - VAR_RIVAL_BATTLES
    - VAR_GYM_LIGHT_STATE
    - FLAG_ROUTE_1_CLEARED
    - FLAG_CINDER_REED_GROVE_CLEARED
 
-## Chapter 1 Encounter Overview
+## Chapter 1 Opening Notes
 
-Chapter 1 focuses on providing early access to fan-favorite species, each with distinct appeal:
+The static validator checks structure and state, but the first 60 seconds still need a playtest pass.
 
-### Saltwind Path (Seaside Route)
-**Common Mons:**
-- Wurmple, Poochyena, Wingull, Zigzagoon, Taillow
+### What the opening should feel like
+**Blackout hook**
+- Show the town is in trouble immediately.
 
-**Rare Standouts:**
-- **Shinx** (4%, Lv.4) — Electric-type powerhouse evolution line
-- **Eevee** (1%, Lv.5) — Versatile evolution options and fan favorite
+**Starter choice**
+- Give the player a fast, meaningful choice and confirm it with a clear prompt.
 
-### Cinder Reed Grove (Forested Dungeon)
-**Common Mons:**
-- Shroomish, Seedot, Surskit, Paras, Taillow
+**First rival**
+- Keep the fight difficult but fair.
+- The player should be able to lose, return home, heal, and try again without breaking the story state.
 
-**Rare Standouts:**
-- **Growlithe** (4%, Lv.6) — Fire-type with strong charm/presence
-- **Ralts** (1%, Lv.7) — Psychic-type gem and endgame staple
-- **Riolu** (1%, Lv.7) — Fighting/Steel hybrid with high player demand
+**Recovery**
+- Mom stays available as the recovery path once the starter has been chosen.
 
-## Design Rationale
-
-The rare species selection follows successful early-access patterns in fan hacks:
-- **Glazed** front-loads high-appeal species like Shinx early for player identity
-- **Pokémon Unbound** places Riolu on Route 2 as a standout find
-- **Gaia** and **Radical Red** support the "early rare species, clearly curated" design
-
-This approach:
-- Rewards thorough exploration with memorable finds
-- Maintains route ecology readability (common slots unchanged)
-- Gives players meaningful early-chapter choices
-- Establishes Beaconfall's character through species availability
+**Progression**
+- The chapter should always move in this order: Ember Hollow -> Route 1 -> Cinder Reed Grove -> Brassfall City -> Forte Hall Gym.
 
 ## Updating the Validator
 
