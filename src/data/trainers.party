@@ -16881,10 +16881,13 @@ Pic: RS May
 Gender: Female
 Music: Female
 Double Battle: No
+AI: Basic Trainer / HP Aware
 
-Chimchar
+Pyrevex @ Oran Berry
 Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Ember
+- Scratch
 
 === TRAINER_BEACONFALL_RIVAL1_PIPLUP ===
 Name: MIRA
@@ -16893,10 +16896,13 @@ Pic: RS May
 Gender: Female
 Music: Female
 Double Battle: No
+AI: Basic Trainer / HP Aware
 
-Piplup
+Karatide @ Oran Berry
 Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Water Gun
+- Pound
 
 === TRAINER_BEACONFALL_RIVAL1_TURTWIG ===
 Name: MIRA
@@ -16905,10 +16911,13 @@ Pic: RS May
 Gender: Female
 Music: Female
 Double Battle: No
+AI: Basic Trainer / HP Aware
 
-Turtwig
+Briarune @ Oran Berry
 Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Absorb
+- Tackle
 
 === TRAINER_BEACONFALL_RIVAL2_CHIMCHAR ===
 Name: MIRA
@@ -16917,14 +16926,19 @@ Pic: RS May
 Gender: Female
 Music: Female
 Double Battle: No
+AI: Basic Trainer / HP Aware
 
 Pidgey
 Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Chimchar
+Pyrevex @ Oran Berry
 Level: 10
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Ember
+- Scratch
+- Leer
+- Taunt
 
 === TRAINER_BEACONFALL_RIVAL2_PIPLUP ===
 Name: MIRA
@@ -16933,14 +16947,18 @@ Pic: RS May
 Gender: Female
 Music: Female
 Double Battle: No
+AI: Basic Trainer / HP Aware
 
 Pidgey
 Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Piplup
+Karatide @ Oran Berry
 Level: 10
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Water Gun
+- Pound
+- Growl
 
 === TRAINER_BEACONFALL_RIVAL2_TURTWIG ===
 Name: MIRA
@@ -16949,14 +16967,18 @@ Pic: RS May
 Gender: Female
 Music: Female
 Double Battle: No
+AI: Basic Trainer / HP Aware
 
 Pidgey
 Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Turtwig
+Briarune @ Oran Berry
 Level: 10
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Absorb
+- Tackle
+- Withdraw
 
 === TRAINER_BEACONFALL_ROUTE_SCOUT ===
 Name: SCOUT

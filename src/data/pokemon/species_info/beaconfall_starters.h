@@ -1,0 +1,211 @@
+/* Beaconfall Chapter 1 custom starters. Battle sprites reuse the Sinnoh trio assets until
+ * dedicated art ships; species data and text are original. */
+
+    [SPECIES_BRIARUNE] =
+    {
+        .baseHP        = 55,
+        .baseAttack    = 68,
+        .baseDefense   = 64,
+        .baseSpeed     = 31,
+        .baseSpAttack  = 45,
+        .baseSpDefense = 55,
+        .types = MON_TYPES(TYPE_GRASS),
+        .catchRate = 45,
+        .expYield = 64,
+        .evYield_Attack = 1,
+        .genderRatio = PERCENT_FEMALE(12.5),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_GRASS),
+        .abilities = { ABILITY_OVERGROW, ABILITY_NONE, ABILITY_SHELL_ARMOR },
+        .bodyColor = BODY_COLOR_GREEN,
+        .speciesName = _("Briarune"),
+        .cryId = CRY_TURTWIG,
+        .natDexNum = NATIONAL_DEX_NONE,
+        .categoryName = _("Bramble"),
+        .height = 4,
+        .weight = 102,
+        .description = COMPOUND_STRING(
+            "The curled leaves on its head sense moisture\n"
+            "in the air. It roots itself in rich soil to\n"
+            "store energy before long journeys."),
+        .pokemonScale = 491,
+        .pokemonOffset = 20,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_Turtwig,
+        .frontPicSize = MON_COORDS_SIZE(40, 48),
+        .frontPicYOffset = 11,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 15),
+            ANIMCMD_FRAME(1, 15),
+            ANIMCMD_FRAME(0, 10),
+        ),
+        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        .backPic = gMonBackPic_Turtwig,
+        .backPicSize = MON_COORDS_SIZE(48, 56),
+        .backPicYOffset = 6,
+        .backAnimId = BACK_ANIM_H_SLIDE,
+        .palette = gMonPalette_Turtwig,
+        .shinyPalette = gMonShinyPalette_Turtwig,
+        .iconSprite = gMonIcon_Turtwig,
+        .iconPalIndex = 1,
+        .pokemonJumpType = PKMN_JUMP_TYPE_SLOW,
+        SHADOW(1, 2, SHADOW_SIZE_S)
+        FOOTPRINT(Turtwig)
+        OVERWORLD(
+            sPicTable_Turtwig,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Turtwig,
+            gShinyOverworldPalette_Turtwig
+        )
+        .levelUpLearnset = sTurtwigLevelUpLearnset,
+        .teachableLearnset = sTurtwigTeachableLearnset,
+        .eggMoveLearnset = sTurtwigEggMoveLearnset,
+    },
+
+    [SPECIES_PYREVEX] =
+    {
+        .baseHP        = 44,
+        .baseAttack    = 58,
+        .baseDefense   = 44,
+        .baseSpeed     = 61,
+        .baseSpAttack  = 58,
+        .baseSpDefense = 44,
+        .types = MON_TYPES(TYPE_FIRE),
+        .catchRate = 45,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 62 : 65,
+        .evYield_Speed = 1,
+        .genderRatio = PERCENT_FEMALE(12.5),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD, EGG_GROUP_HUMAN_LIKE),
+        .abilities = { ABILITY_BLAZE, ABILITY_NONE, ABILITY_IRON_FIST },
+        .bodyColor = BODY_COLOR_BROWN,
+        .noFlip = TRUE,
+        .speciesName = _("Pyrevex"),
+        .cryId = CRY_CHIMCHAR,
+        .natDexNum = NATIONAL_DEX_NONE,
+        .categoryName = _("Ember"),
+        .height = 5,
+        .weight = 62,
+        .description = COMPOUND_STRING(
+            "It keeps a small flame on its tail even in\n"
+            "rain. The heat it radiates is a comfort to\n"
+            "allies and a warning to wild Pokémon."),
+        .pokemonScale = 432,
+        .pokemonOffset = 15,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_Chimchar,
+        .frontPicSize = MON_COORDS_SIZE(32, 48),
+        .frontPicYOffset = 10,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 8),
+            ANIMCMD_FRAME(0, 8),
+            ANIMCMD_FRAME(1, 8),
+            ANIMCMD_FRAME(0, 8),
+            ANIMCMD_FRAME(1, 8),
+            ANIMCMD_FRAME(0, 8),
+        ),
+        .frontAnimId = ANIM_V_JUMPS_BIG,
+        .backPic = gMonBackPic_Chimchar,
+        .backPicSize = MON_COORDS_SIZE(56, 56),
+        .backPicYOffset = 6,
+        .backAnimId = BACK_ANIM_CONVEX_DOUBLE_ARC,
+        .palette = gMonPalette_Chimchar,
+        .shinyPalette = gMonShinyPalette_Chimchar,
+        .iconSprite = gMonIcon_Chimchar,
+        .iconPalIndex = 1,
+        .pokemonJumpType = PKMN_JUMP_TYPE_FAST,
+        SHADOW(4, 3, SHADOW_SIZE_S)
+        FOOTPRINT(Chimchar)
+        OVERWORLD(
+            sPicTable_Chimchar,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Chimchar,
+            gShinyOverworldPalette_Chimchar
+        )
+        .levelUpLearnset = sChimcharLevelUpLearnset,
+        .teachableLearnset = sChimcharTeachableLearnset,
+        .eggMoveLearnset = sChimcharEggMoveLearnset,
+    },
+
+    [SPECIES_KARATIDE] =
+    {
+        .baseHP        = 53,
+        .baseAttack    = 51,
+        .baseDefense   = 53,
+        .baseSpeed     = 40,
+        .baseSpAttack  = 61,
+        .baseSpDefense = 56,
+        .types = MON_TYPES(TYPE_WATER),
+        .catchRate = 45,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 63 : 66,
+        .evYield_SpAttack = 1,
+        .genderRatio = PERCENT_FEMALE(12.5),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_FIELD),
+    #if P_UPDATED_ABILITIES >= GEN_9
+        .abilities = { ABILITY_TORRENT, ABILITY_NONE, ABILITY_COMPETITIVE },
+    #else
+        .abilities = { ABILITY_TORRENT, ABILITY_NONE, ABILITY_DEFIANT },
+    #endif
+        .bodyColor = BODY_COLOR_BLUE,
+        .speciesName = _("Karatide"),
+        .cryId = CRY_PIPLUP,
+        .natDexNum = NATIONAL_DEX_NONE,
+        .categoryName = _("Harbor"),
+        .height = 4,
+        .weight = 52,
+        .description = COMPOUND_STRING(
+            "Its slick feathers shed salt and spray.\n"
+            "It tests the current with quick kicks before\n"
+            "committing to a swim."),
+        .pokemonScale = 491,
+        .pokemonOffset = 17,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_Piplup,
+        .frontPicSize = MON_COORDS_SIZE(24, 40),
+        .frontPicYOffset = 14,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 30),
+            ANIMCMD_FRAME(1, 30),
+            ANIMCMD_FRAME(0, 1),
+        ),
+        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        .backPic = gMonBackPic_Piplup,
+        .backPicSize = MON_COORDS_SIZE(40, 48),
+        .backPicYOffset = 10,
+        .backAnimId = BACK_ANIM_CONCAVE_ARC_SMALL,
+        .palette = gMonPalette_Piplup,
+        .shinyPalette = gMonShinyPalette_Piplup,
+        .iconSprite = gMonIcon_Piplup,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NORMAL,
+        SHADOW(0, -1, SHADOW_SIZE_S)
+        FOOTPRINT(Piplup)
+        OVERWORLD(
+            sPicTable_Piplup,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Piplup,
+            gShinyOverworldPalette_Piplup
+        )
+        .levelUpLearnset = sPiplupLevelUpLearnset,
+        .teachableLearnset = sPiplupTeachableLearnset,
+        .eggMoveLearnset = sPiplupEggMoveLearnset,
+    },
