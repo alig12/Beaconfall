@@ -32,11 +32,11 @@ EmberHollowTown_ProfessorLab_EventScript_Mira::
 	goto_if_unset FLAG_BEACONFALL_STARTER_SELECTED, EmberHollowTown_ProfessorLab_EventScript_MiraBeforeStarter
 	special HealPlayerParty
 	msgbox EmberHollowTown_ProfessorLab_Text_MiraIntroUrgent, MSGBOX_DEFAULT
-	playse SE_PSYCH_UP
+	playse SE_M_CHARGE
 	applymovement LOCALID_MIRA, EmberHollowTown_Movement_MiraStepCloser
 	waitmovement 0
 	delay 15
-	playse SE_THUNDERBOLT
+	playse SE_M_THUNDERBOLT
 	setvar VAR_0x8004, 1
 	setvar VAR_0x8005, 1
 	setvar VAR_0x8006, 3

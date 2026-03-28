@@ -17,11 +17,9 @@ EmberHollowTown_PlayersHouse_1F_EventScript_MomHeal::
 	end
 
 EmberHollowTown_PlayersHouse_1F_EventScript_PerformHealing::
-	closemessage
-	playse SE_HEAL
-	dofieldeffect FLDEFF_HEAL_TEAM_COLOR_FLASH
-	waitstate
-	playse SE_HEAL
+	playfanfare MUS_HEAL
+	dofieldeffect FLDEFF_POKECENTER_HEAL
+	waitfieldeffect FLDEFF_POKECENTER_HEAL
 	special HealPlayerParty
 	return
 

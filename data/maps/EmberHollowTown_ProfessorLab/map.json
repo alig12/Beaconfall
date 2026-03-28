@@ -29,6 +29,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_MIRA",
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_MAY_NORMAL",
       "x": 8,
