@@ -2,10 +2,10 @@
   "id": "MAP_EMBER_HOLLOW_TOWN",
   "name": "EmberHollowTown",
   "layout": "LAYOUT_LITTLEROOT_TOWN",
-  "music": "MUS_LITTLEROOT",
-  "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
+  "music": "MUS_ROUTE122",
+  "region_map_section": "MAPSEC_EMBER_HOLLOW_TOWN",
   "requires_flash": false,
-  "weather": "WEATHER_SUNNY",
+  "weather": "WEATHER_SHADE",
   "map_type": "MAP_TYPE_TOWN",
   "allow_cycling": true,
   "allow_escaping": false,
@@ -21,24 +21,11 @@
   ],
   "object_events": [
     {
-      "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_PROF_BIRCH",
-      "x": 14,
-      "y": 10,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "EmberHollowTown_EventScript_Professor",
-      "flag": "0"
-    },
-    {
+      "local_id": "LOCALID_EMBER_GATE_A",
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
       "x": 10,
-      "y": 1,
+      "y": 2,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -47,10 +34,59 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EmberHollowTown_EventScript_ExitGuard",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_EMBER_GATE_B",
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
+      "x": 11,
+      "y": 2,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EmberHollowTown_EventScript_ExitGuard",
+      "flag": "FLAG_EMBER_NORTH_GATE_TWIN_MOVED"
     }
   ],
-  "warp_events": [],
-  "coord_events": [],
+  "warp_events": [
+    {
+      "x": 5,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_EMBER_HOLLOW_TOWN_PLAYERS_HOUSE_1F",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 7,
+      "y": 16,
+      "elevation": 0,
+      "dest_map": "MAP_EMBER_HOLLOW_TOWN_PROFESSOR_LAB",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 1,
+      "elevation": 3,
+      "var": "VAR_UNUSED_0x40F9",
+      "var_value": "0",
+      "script": "EmberHollowTown_EventScript_NorthGateTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 11,
+      "y": 1,
+      "elevation": 3,
+      "var": "VAR_UNUSED_0x40F9",
+      "var_value": "0",
+      "script": "EmberHollowTown_EventScript_NorthGateTrigger"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",

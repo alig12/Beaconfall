@@ -3,18 +3,37 @@ BrassfallCity_MapScripts::
 	.byte 0
 
 BrassfallCity_OnTransition::
-	setworldmapflag FLAG_WORLD_MAP_VIRIDIAN_CITY
+	setweather WEATHER_SHADE
+	doweather
 	end
 
 BrassfallCity_EventScript_RivalBattle::
 	lockall
-	trainerbattle_single TRAINER_BEACONFALL_RIVAL2, BrassfallCity_Text_RivalIntro, BrassfallCity_Text_RivalDefeat, BrassfallCity_EventScript_RivalBattleDefeated
-	releaseall
+	switch VAR_STARTER_MON
+	case 0, BrassfallCity_EventScript_RivalBattleChimchar
+	case 1, BrassfallCity_EventScript_RivalBattlePiplup
+	case 2, BrassfallCity_EventScript_RivalBattleTurtwig
+	end
+
+BrassfallCity_EventScript_RivalBattleChimchar::
+	trainerbattle_single TRAINER_BEACONFALL_RIVAL2_CHIMCHAR, BrassfallCity_Text_RivalIntro, BrassfallCity_Text_RivalDefeat
+	goto BrassfallCity_EventScript_RivalBattleDefeated
+	end
+
+BrassfallCity_EventScript_RivalBattlePiplup::
+	trainerbattle_single TRAINER_BEACONFALL_RIVAL2_PIPLUP, BrassfallCity_Text_RivalIntro, BrassfallCity_Text_RivalDefeat
+	goto BrassfallCity_EventScript_RivalBattleDefeated
+	end
+
+BrassfallCity_EventScript_RivalBattleTurtwig::
+	trainerbattle_single TRAINER_BEACONFALL_RIVAL2_TURTWIG, BrassfallCity_Text_RivalIntro, BrassfallCity_Text_RivalDefeat
+	goto BrassfallCity_EventScript_RivalBattleDefeated
 	end
 
 BrassfallCity_EventScript_RivalBattleDefeated::
 	call BeaconfallChapter1_EventScript_MarkBrassfallEntered
 	msgbox BrassfallCity_Text_RivalAfter, MSGBOX_AUTOCLOSE
+	releaseall
 	end
 
 BrassfallCity_EventScript_GymGuide::
@@ -33,6 +52,7 @@ BrassfallCity_EventScript_GymGuideOpen::
 BrassfallCity_EventScript_Healer::
 	lock
 	faceplayer
+	setrespawn HEAL_LOCATION_BRASSFALL_CITY
 	msgbox BrassfallCity_Text_Healer, MSGBOX_DEFAULT
 	special HealPlayerParty
 	release

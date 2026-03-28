@@ -1,10 +1,10 @@
 {
   "id": "MAP_FORTE_HALL_GYM",
   "name": "ForteHallGym",
-  "layout": "LAYOUT_VIRIDIAN_CITY_GYM",
+  "layout": "LAYOUT_PETALBURG_CITY_GYM",
   "music": "MUS_GYM",
-  "region_map_section": "MAPSEC_VIRIDIAN_CITY",
-  "requires_flash": false,
+  "region_map_section": "MAPSEC_BRASSFALL_CITY",
+  "requires_flash": true,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
   "allow_cycling": false,
@@ -16,7 +16,7 @@
   "object_events": [
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_GUITARIST",
+      "graphics_id": "OBJ_EVENT_GFX_ROCKER",
       "x": 5,
       "y": 14,
       "elevation": 3,
@@ -30,7 +30,7 @@
     },
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_GUITARIST",
+      "graphics_id": "OBJ_EVENT_GFX_ROCKER",
       "x": 3,
       "y": 10,
       "elevation": 3,
@@ -66,7 +66,7 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "3",
+      "trainer_sight_or_berry_tree_id": "4",
       "script": "ForteHallGym_EventScript_Leader",
       "flag": "0"
     }
@@ -77,7 +77,7 @@
       "y": 16,
       "elevation": 0,
       "dest_map": "MAP_BRASSFALL_CITY",
-      "dest_warp_id": "1"
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [],

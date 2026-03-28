@@ -34,7 +34,7 @@ trainer tables, encounter tables, and flags or variables.
 
 ## What good looks like
 
-- The starter trio is always Growlithe, Wooper, and Budew.
+- The starter trio is always Briarune, Pyrevex, and Karatide.
 - The chapter always ends at the first badge.
 - The gym puzzle is deterministic.
 - The chapter-complete state is preserved after reload.

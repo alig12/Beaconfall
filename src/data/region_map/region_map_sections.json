@@ -1630,6 +1630,38 @@
       "y": 4,
       "width": 1,
       "height": 1
+    },
+    {
+      "id": "MAPSEC_EMBER_HOLLOW_TOWN",
+      "name": "EMBER HOLLOW TOWN",
+      "x": 26,
+      "y": 4,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_SALTWIND_PATH",
+      "name": "SALTWIND PATH",
+      "x": 26,
+      "y": 3,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_CINDER_REED_GROVE",
+      "name": "CINDER REED GROVE",
+      "x": 26,
+      "y": 2,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_BRASSFALL_CITY",
+      "name": "BRASSFALL CITY",
+      "x": 26,
+      "y": 1,
+      "width": 1,
+      "height": 1
     }
   ]
 }

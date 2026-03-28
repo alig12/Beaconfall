@@ -5,7 +5,7 @@ tracks the game itself, the Chapter 1 design docs, and the engine code needed to
 
 ## Current Focus
 
-- Chapter 1 opens in Ember Hollow Town with Growlithe, Wooper, or Budew as the starter trio.
+- Chapter 1 opens in Ember Hollow Town with Briarune, Pyrevex, or Karatide as the starter trio.
 - The first route, grove, city, and gym are built as a playable vertical slice.
 - Progress is tracked with flags, vars, and shared script helpers instead of ad hoc state.
 
