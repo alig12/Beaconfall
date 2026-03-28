@@ -26,6 +26,8 @@ BeaconfallChapter1_EventScript_StartJourney::
 	setvar VAR_RIVAL_BATTLES, 0
 	setvar VAR_GYM_LIGHT_STATE, 0
 	setrespawn HEAL_LOCATION_EMBER_HOLLOW_PLAYERS_HOUSE_2F
+	@ Sync HGSS party follower (OW) now that the lead Pokémon is the starter; map reload also calls UpdateFollowingPokemon.
+	updatefollowingmon
 	return
 
 BeaconfallChapter1_EventScript_MarkRoute1Cleared::
