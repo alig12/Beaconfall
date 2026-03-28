@@ -272,6 +272,7 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_EVER_GRANDE_POKEMON_CENTER_1F_SCOTT
 	setflag FLAG_HIDE_SKY_PILLAR_WALLACE
 	setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL
+	call BeaconfallChapter1_EventScript_ResetProgress
 	call EventScript_ResetAllBerries
 	end
 
@@ -325,5 +326,6 @@ EventScript_ResetAllMapFlagsFrlg::
 	setflag FLAG_HIDE_FAME_CHECKER_KOGA_JOURNAL
 	setflag FLAG_HIDE_FAME_CHECKER_LT_SURGE_JOURNAL
 	setflag FLAG_HIDE_SAFFRON_CITY_POKECENTER_SABRINA_JOURNALS
+	call BeaconfallChapter1_EventScript_ResetProgress
 	setvar VAR_MASSAGE_COOLDOWN_STEP_COUNTER, 500
 	end

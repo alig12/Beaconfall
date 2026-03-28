@@ -956,6 +956,12 @@ void ChooseStarter(void)
     gMain.savedCallback = CB2_GiveStarter;
 }
 
+void ChooseBeaconfallStarter(void)
+{
+    SetMainCallback2(CB2_ChooseStarter);
+    gMain.savedCallback = CB2_GiveBeaconfallStarter;
+}
+
 static void CB2_GiveStarter(void)
 {
     u16 starterMon;
@@ -967,6 +973,16 @@ static void CB2_GiveStarter(void)
     PlayBattleBGM();
     SetMainCallback2(CB2_StartFirstBattle);
     BattleTransition_Start(B_TRANSITION_BLUR);
+}
+
+static void CB2_GiveBeaconfallStarter(void)
+{
+    u16 starterMon;
+
+    *GetVarPointer(VAR_STARTER_MON) = gSpecialVar_Result;
+    starterMon = GetStarterPokemon(gSpecialVar_Result);
+    ScriptGiveMon(starterMon, 5, ITEM_NONE);
+    SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
 }
 
 static void CB2_StartFirstBattle(void)
