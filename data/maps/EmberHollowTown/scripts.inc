@@ -83,32 +83,38 @@ EmberHollowTown_EventScript_TownSign::
 
 EmberHollowTown_Text_BlackoutIntro::
 	.string "The harbor lamps just died.\p"
-	.string "Somewhere out on the coast, the beacon\n"
-	.string "network failed, and the whole town went dim.$"
+	.string "Somewhere out on the coast.\p"
+	.string "The beacon network failed.\p"
+	.string "The whole town went dim.$"
 
 EmberHollowTown_Text_NeedPokemon::
-	.string "GUARD: The route's dark. No way I'm\n"
-	.string "letting you cross without a partner.\p"
-	.string "PROF. BIRCH is at the lab. Get one first.$"
+	.string "GUARD: The route's dark.\p"
+	.string "No way I'm letting you cross\n"
+	.string "without a partner.\p"
+	.string "PROF. BIRCH is at the lab.\p"
+	.string "Go get one first.$"
 
 EmberHollowTown_Text_NeedMiraBattle::
 	.string "GUARD: You've got a partner now.\p"
-	.string "But MIRA doesn't let rookies waltz past\n"
-	.string "the gates. She's testing everyone.\l"
+	.string "MIRA won't let rookies past\n"
+	.string "the gates.\p"
+	.string "She's testing everyone.\p"
 	.string "Handle her first, then we talk.$"
 
 EmberHollowTown_Text_GuardNeedMon::
-	.string "GUARD: Lab first. Birch doesn't hand out\n"
-	.string "partners for fun. Get one and come back.$"
+	.string "GUARD: Lab first.\p"
+	.string "Birch doesn't hand out partners.\p"
+	.string "Get one and come back.$"
 
 EmberHollowTown_Text_GuardNeedMira::
-	.string "GUARD: Talk to MIRA. She won't let rookies\n"
-	.string "wander until she's tested them.$"
+	.string "GUARD: Talk to MIRA.\p"
+	.string "She'll only open the way\n"
+	.string "after the test.$"
 
 EmberHollowTown_Text_GuardAllClear::
-	.string "GUARD: Lights are still out, but you've got\n"
-	.string "what it takes.\p"
-	.string "Saltwind Path's a mess in the dark.\n"
+	.string "GUARD: Lights are still out.\p"
+	.string "But you've got what it takes.\p"
+	.string "Saltwind Path is dark.\p"
 	.string "Watch for wild Pokémon.$"
 
 EmberHollowTown_Text_TownSign::

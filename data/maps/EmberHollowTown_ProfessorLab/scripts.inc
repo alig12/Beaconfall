@@ -82,26 +82,26 @@ EmberHollowTown_ProfessorLab_EventScript_MiraAfter::
 	end
 
 EmberHollowTown_ProfessorLab_Text_Intro::
-	.string "PROF. BIRCH: The beacons just failed.\p"
-	.string "Saltwind Path is dark, and the wild\n"
-	.string "Pokémon are restless.\l"
+	.string "BIRCH: The beacons failed.\p"
+	.string "Saltwind Path is dark.\p"
+	.string "Wild Pokémon are restless.\p"
 	.string "Pick a partner. We move now.$"
 
 EmberHollowTown_ProfessorLab_Text_StarterDone::
-	.string "PROF. BIRCH: Good. That partner is yours.\p"
-	.string "MIRA's waiting by the desk. She wants to\n"
-	.string "see you fight.$"
+	.string "BIRCH: Good. It's yours now.\p"
+	.string "MIRA's by the desk.\p"
+	.string "Go show her what you can do.$"
 
 EmberHollowTown_ProfessorLab_Text_SeeMira::
-	.string "Talk to MIRA by the desk when you're ready.$"
+	.string "MIRA's by the desk.\p"
+	.string "Talk to her when ready.$"
 
 EmberHollowTown_ProfessorLab_Text_TalkToMira::
-	.string "PROF. BIRCH: MIRA doesn't waste time.\n"
+	.string "BIRCH: MIRA doesn't waste time.\p"
 	.string "Go hear her out.$"
 
 EmberHollowTown_ProfessorLab_Text_AfterTutorial::
-	.string "PROF. BIRCH: Saltwind Path opens once you\n"
-	.string "step outside town.\p"
+	.string "BIRCH: Path opens outside town.\p"
 	.string "Move fast, but don't get careless.$"
 
 EmberHollowTown_ProfessorLab_Text_MiraBeforeStarter::
@@ -117,16 +117,19 @@ EmberHollowTown_ProfessorLab_Text_MiraIntroAlarm::
 	.string "Show me you can handle pressure.$"
 
 EmberHollowTown_ProfessorLab_Text_MiraIntro::
-	.string "MIRA: Finally. Let's see what you've got.$"
+	.string "MIRA: Let's see what you've got.$"
 
 EmberHollowTown_ProfessorLab_Text_MiraDefeat::
-	.string "MIRA: Heh. Not bad for fresh out of the lab.$"
+	.string "MIRA: Not bad.\p"
+	.string "Fresh out of the lab, too.$"
 
 EmberHollowTown_ProfessorLab_Text_MiraAfter::
-	.string "MIRA: Gates stay closed in a blackout unless\n"
-	.string "you've got a Pokémon. You're clear.\p"
+	.string "MIRA: Gates stay closed.\p"
+	.string "You'll need a Pokémon first.\p"
+	.string "You're clear.\p"
 	.string "I'll catch up on Saltwind Path.$"
 
 EmberHollowTown_ProfessorLab_Text_MiraLater::
-	.string "MIRA: Don't linger. Every minute without the\n"
-	.string "beacons is ugly out there.$"
+	.string "MIRA: Don't linger.\p"
+	.string "Every minute without the beacons\n"
+	.string "is ugly out there.$"

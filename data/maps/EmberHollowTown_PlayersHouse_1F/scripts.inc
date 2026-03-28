@@ -26,18 +26,20 @@ EmberHollowTown_PlayersHouse_1F_EventScript_PerformHealing::
 	return
 
 EmberHollowTown_PlayersHouse_1F_Text_MomWaitingForNews::
-	.string "MOM: Honey! I was so worried when the\n"
+	.string "MOM: I was worried when the\n"
 	.string "lights went out.\p"
-	.string "The beacons are down, and without them,\n"
-	.string "the roads are dangerous.\l"
+	.string "The beacons are down.\p"
+	.string "Without them, the roads are\n"
+	.string "dangerous.\p"
 	.string "Please be careful if you go out.$"
 
 EmberHollowTown_PlayersHouse_1F_Text_MomHealingOffer::
 	.string "MOM: You've got your partner now.\p"
-	.string "Let me patch you up before you head back\n"
-	.string "out into the dark.$"
+	.string "Let me patch you up.\p"
+	.string "Then head back out there.$"
 
 EmberHollowTown_PlayersHouse_1F_Text_MomHealed::
 	.string "MOM: There. You're all patched up.\p"
-	.string "If the route gets rough, come back here\n"
-	.string "and I'll help again.$"
+	.string "If the route gets rough,\n"
+	.string "come back here.\p"
+	.string "I'll help again.$"
