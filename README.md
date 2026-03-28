@@ -1,57 +1,49 @@
 # Pokémon Beaconfall
 
-Pokémon Beaconfall is a coastal GBA ROM hack built on `pokeemerald-expansion`. This repository
-tracks the game itself, the Chapter 1 design docs, and the engine code needed to build the ROM.
+Pokémon Beaconfall is an original GBA ROM hack built on `pokeemerald-expansion`.
+This repository is the game project itself: story, maps, scripts, balance, docs, and the engine
+hooks needed to make Beaconfall playable.
 
-## Current Focus
+## What This Repo Is
 
-- Chapter 1 opens in Ember Hollow Town with Growlithe, Wooper, or Budew as the starter trio.
-- The first route, grove, city, and gym are built as a playable vertical slice.
-- Progress is tracked with flags, vars, and shared script helpers instead of ad hoc state.
+- A new-game project, not a generic engine template.
+- A story-first ROM hack with Beaconfall as the playable world.
+- A place to keep design docs, implementation notes, and game content together.
 
-## Key Docs
+## Current Chapter
 
-- [`BEACONFALL_SPEC_KIT_PROMPTS.md`](BEACONFALL_SPEC_KIT_PROMPTS.md) - prompt pack used for the Chapter 1 spec.
-- [`FIRST_CHAPTER_PLAN.md`](FIRST_CHAPTER_PLAN.md) - implementation plan for the first chapter.
-- [`RESEARCH.md`](RESEARCH.md) - research notes and engine decisions behind the chapter structure.
-- [`specs/001-beaconfall-ch1-spec/README.md`](specs/001-beaconfall-ch1-spec/README.md) - overview of the Chapter 1 spec folder.
+- Chapter 1 is the active vertical slice.
+- The opening starts in Ember Hollow Town.
+- The starter trio is Growlithe, Wooper, and Budew.
+- The current flow runs through Saltwind Path, Cinder Reed Grove, Brassfall City, and Forte Hall Gym.
+- The chapter includes rival battles, early trainer battles, and a light-based gym puzzle.
+
+## Repository Layout
+
+- `data/` - maps, scripts, encounters, text, and other game content.
+- `src/` - gameplay logic and engine hooks.
+- `specs/` - design docs, plans, research, quickstarts, and task lists.
+- `docs/` - inherited engine reference docs and navigation.
+- `graphics/`, `sound/`, and `tools/` - asset and build support for the ROM hack.
+
+## Project Docs
+
+- [`BEACONFALL_SPEC_KIT_PROMPTS.md`](BEACONFALL_SPEC_KIT_PROMPTS.md) - prompt pack for the chapter spec work.
+- [`FIRST_CHAPTER_PLAN.md`](FIRST_CHAPTER_PLAN.md) - implementation plan for Chapter 1.
+- [`RESEARCH.md`](RESEARCH.md) - research notes and engine decisions behind the chapter.
+- [`specs/001-beaconfall-ch1-spec/README.md`](specs/001-beaconfall-ch1-spec/README.md) - chapter spec index.
 - [`specs/001-beaconfall-ch1-spec/quickstart.md`](specs/001-beaconfall-ch1-spec/quickstart.md) - implementation and validation guide.
-- [`specs/001-beaconfall-ch1-spec/tasks.md`](specs/001-beaconfall-ch1-spec/tasks.md) - task list and dependency map.
+- [`specs/001-beaconfall-ch1-spec/tasks.md`](specs/001-beaconfall-ch1-spec/tasks.md) - task breakdown and dependencies.
 
-## Engine Reference
+## Setup and Development
 
-Beaconfall still uses the `pokeemerald-expansion` toolchain, data model, and build flow.
-[`FEATURES.md`](FEATURES.md) describes the engine capabilities the game inherits, and
-[`INSTALL.md`](INSTALL.md) covers setup and build instructions.
+- Start with [`INSTALL.md`](INSTALL.md) to set up the toolchain and build the ROM.
+- Use [`FEATURES.md`](FEATURES.md) as the inherited engine capability reference.
+- Use [`CONTRIBUTING.md`](CONTRIBUTING.md) when opening issues or pull requests.
+- Track project milestones in [`CHANGELOG.md`](CHANGELOG.md).
+- Use [`CREDITS.md`](CREDITS.md) for upstream engine credit and project contributor credit.
 
-## Contributing
+## Need the Engine Docs?
 
-If you want to report a bug or open a pull request, start with [`CONTRIBUTING.md`](CONTRIBUTING.md).
-For project updates and community discussion, use the ROM Hacking Hideout Discord server linked
-in the engine docs.
-
-<!-- docs-overview:start -->
-## Documentation index
-
-This index keeps the Beaconfall project docs close to the top and short-circuits the Chapter 1
-spec tree through its local overview at `specs/001-beaconfall-ch1-spec/README.md`.
-
-### Project Docs
-
-- [Beaconfall Spec Kit Prompts](BEACONFALL_SPEC_KIT_PROMPTS.md) - prompt pack for the chapter spec and implementation flow.
-- [Beaconfall Chapter 1 Plan](FIRST_CHAPTER_PLAN.md) - the approved first-chapter implementation plan.
-- [Beaconfall Research Notes](RESEARCH.md) - technical research and design decisions for the chapter.
-- [Beaconfall Chapter 1 Spec Overview](specs/001-beaconfall-ch1-spec/README.md) - entry point for the spec, plan, research, and task docs.
-
-### Engine Docs
-
-- [Features](FEATURES.md) - engine capabilities Beaconfall inherits from `pokeemerald-expansion`.
-- [Install Guide](INSTALL.md) - setup and build instructions for the underlying engine toolchain.
-- [Contributing](CONTRIBUTING.md) - project and repository contribution guidance.
-- [Credits](CREDITS.md) - contributor credits for the engine base.
-
-### Supporting Docs
-
-- [Docs Summary](docs/SUMMARY.md) - documentation index for the existing engine docs tree.
-- [Pull Request Template](.github/pull_request_template.md) - standard PR description template.
-<!-- docs-overview:end -->
+The repo still inherits `pokeemerald-expansion`, so the underlying engine documentation remains
+in `docs/`. If you're here to play or extend Beaconfall, start with the project docs above.
