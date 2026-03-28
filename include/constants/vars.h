@@ -267,7 +267,7 @@
 #define VAR_SCOTT_BF_CALL_STEP_COUNTER                   0x40F5
 #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER             0x40F6
 #define VAR_RIVAL_BATTLES                                0x40F7
-#define VAR_GYM_LIGHT_STATE                              0x40F8
+#define VAR_GYM_LIGHT_STATE                              0x40F8 // 0–3: count of lit Forte Hall rigs (see FLAG_FORTE_GYM_RIG_*)
 #define VAR_UNUSED_0x40F9                                0x40F9 // Unused Var
 #define VAR_BEACONFALL_BLACKOUT_MSG                       0x40FA // 0 = show blackout text once on Ember via ON_FRAME; 1 = done
 #define VAR_UNUSED_0x40FB                                0x40FB // Unused Var

@@ -675,9 +675,9 @@
 #define FLAG_BEACONFALL_GROVE_LAMP_A       0x26C
 #define FLAG_BEACONFALL_GROVE_LAMP_B       0x26D
 #define FLAG_EMBER_NORTH_GATE_TWIN_MOVED   0x26E // One twin stepped aside; path to Route 1 unblocked
-#define FLAG_UNUSED_0x26F  0x26F // Unused Flag
-#define FLAG_UNUSED_0x270  0x270 // Unused Flag
-#define FLAG_UNUSED_0x271  0x271 // Unused Flag
+#define FLAG_FORTE_GYM_RIG_LEFT            0x26F // Forte Hall gym: left rig lit (persisted puzzle state)
+#define FLAG_FORTE_GYM_RIG_RIGHT           0x270 // Forte Hall gym: right rig lit
+#define FLAG_FORTE_GYM_RIG_CENTER          0x271 // Forte Hall gym: center rig lit
 #define FLAG_UNUSED_0x272  0x272 // Unused Flag
 #define FLAG_UNUSED_0x273  0x273 // Unused Flag
 #define FLAG_UNUSED_0x274  0x274 // Unused Flag

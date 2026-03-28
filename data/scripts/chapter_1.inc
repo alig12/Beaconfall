@@ -9,6 +9,9 @@ BeaconfallChapter1_EventScript_ResetProgress::
 	clearflag FLAG_BEACONFALL_GROVE_LAMP_A
 	clearflag FLAG_BEACONFALL_GROVE_LAMP_B
 	clearflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
+	clearflag FLAG_FORTE_GYM_RIG_LEFT
+	clearflag FLAG_FORTE_GYM_RIG_RIGHT
+	clearflag FLAG_FORTE_GYM_RIG_CENTER
 	setvar VAR_RIVAL_BATTLES, 0
 	setvar VAR_GYM_LIGHT_STATE, 0
 	setvar VAR_STARTER_MON, 0
@@ -24,6 +27,9 @@ BeaconfallChapter1_EventScript_StartJourney::
 	setflag FLAG_SYS_POKEDEX_GET
 	special SetUnlockedPokedexFlags
 	setvar VAR_RIVAL_BATTLES, 0
+	clearflag FLAG_FORTE_GYM_RIG_LEFT
+	clearflag FLAG_FORTE_GYM_RIG_RIGHT
+	clearflag FLAG_FORTE_GYM_RIG_CENTER
 	setvar VAR_GYM_LIGHT_STATE, 0
 	setrespawn HEAL_LOCATION_EMBER_HOLLOW_PLAYERS_HOUSE_2F
 	@ Sync HGSS party follower (OW) now that the lead Pokémon is the starter; map reload also calls UpdateFollowingPokemon.

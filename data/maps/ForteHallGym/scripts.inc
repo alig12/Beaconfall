@@ -4,12 +4,37 @@ ForteHallGym_MapScripts::
 	.byte 0
 
 ForteHallGym_OnLoad::
+	call ForteHallGym_EventScript_RecalculateLightVar
 	call ForteHallGym_EventScript_ApplyPersistedLights
 	end
 
 ForteHallGym_OnTransition::
+	call ForteHallGym_EventScript_RecalculateLightVar
 	call ForteHallGym_EventScript_UpdateAmbientFlash
 	end
+
+@ VAR_GYM_LIGHT_STATE = count of FLAG_FORTE_GYM_RIG_* (0–3). Flags persist which rigs are lit in any order.
+ForteHallGym_EventScript_RecalculateLightVar::
+	setvar VAR_GYM_LIGHT_STATE, 0
+	goto_if_set FLAG_FORTE_GYM_RIG_LEFT, ForteHallGym_Recalc_AddOneA
+ForteHallGym_Recalc_CheckRight::
+	goto_if_set FLAG_FORTE_GYM_RIG_RIGHT, ForteHallGym_Recalc_AddOneB
+ForteHallGym_Recalc_CheckCenter::
+	goto_if_set FLAG_FORTE_GYM_RIG_CENTER, ForteHallGym_Recalc_AddOneC
+ForteHallGym_Recalc_Done::
+	return
+
+ForteHallGym_Recalc_AddOneA::
+	addvar VAR_GYM_LIGHT_STATE, 1
+	goto ForteHallGym_Recalc_CheckRight
+
+ForteHallGym_Recalc_AddOneB::
+	addvar VAR_GYM_LIGHT_STATE, 1
+	goto ForteHallGym_Recalc_CheckCenter
+
+ForteHallGym_Recalc_AddOneC::
+	addvar VAR_GYM_LIGHT_STATE, 1
+	goto ForteHallGym_Recalc_Done
 
 @ Darker flash level = dimmer arena (see Dewford Gym pattern).
 ForteHallGym_EventScript_UpdateAmbientFlash::
@@ -34,14 +59,30 @@ ForteHallGym_EventScript_FlashClear::
 
 ForteHallGym_EventScript_ApplyPersistedLights::
 	goto_if_set FLAG_BADGE01_GET, ForteHallGym_EventScript_ApplyAllStageLights
-	goto_if_lt VAR_GYM_LIGHT_STATE, 1, ForteHallGym_EventScript_ApplyLightsDone
-	call ForteHallGym_EventScript_LightStageLeftMetatiles
-	goto_if_lt VAR_GYM_LIGHT_STATE, 2, ForteHallGym_EventScript_ApplyLightsDone
-	call ForteHallGym_EventScript_LightStageRightMetatiles
-	goto_if_lt VAR_GYM_LIGHT_STATE, 3, ForteHallGym_EventScript_ApplyLightsDone
-	call ForteHallGym_EventScript_LightStageCenterMetatiles
+	call ForteHallGym_EventScript_ApplyLitRigsFromFlags
 ForteHallGym_EventScript_ApplyLightsDone::
 	end
+
+ForteHallGym_EventScript_ApplyLitRigsFromFlags::
+	goto_if_set FLAG_FORTE_GYM_RIG_LEFT, ForteHallGym_ApplyDoLeft
+ForteHallGym_ApplyAfterLeft::
+	goto_if_set FLAG_FORTE_GYM_RIG_RIGHT, ForteHallGym_ApplyDoRight
+ForteHallGym_ApplyAfterRight::
+	goto_if_set FLAG_FORTE_GYM_RIG_CENTER, ForteHallGym_ApplyDoCenter
+ForteHallGym_ApplyAfterCenter::
+	return
+
+ForteHallGym_ApplyDoLeft::
+	call ForteHallGym_EventScript_LightStageLeftMetatiles
+	goto ForteHallGym_ApplyAfterLeft
+
+ForteHallGym_ApplyDoRight::
+	call ForteHallGym_EventScript_LightStageRightMetatiles
+	goto ForteHallGym_ApplyAfterRight
+
+ForteHallGym_ApplyDoCenter::
+	call ForteHallGym_EventScript_LightStageCenterMetatiles
+	goto ForteHallGym_ApplyAfterCenter
 
 ForteHallGym_EventScript_ApplyAllStageLights::
 	call ForteHallGym_EventScript_LightStageLeftMetatiles
@@ -83,8 +124,9 @@ ForteHallGym_EventScript_TrainerLamp::
 	end
 
 ForteHallGym_EventScript_TrainerLampDefeated::
-	addvar VAR_GYM_LIGHT_STATE, 1
-	call ForteHallGym_EventScript_LightStageLeftMetatiles
+	setflag FLAG_FORTE_GYM_RIG_LEFT
+	call ForteHallGym_EventScript_RecalculateLightVar
+	call ForteHallGym_EventScript_ApplyLitRigsFromFlags
 	call ForteHallGym_EventScript_UpdateAmbientFlash
 	playse SE_M_MEGA_KICK
 	msgbox ForteHallGym_Text_LampAfter, MSGBOX_AUTOCLOSE
@@ -95,8 +137,9 @@ ForteHallGym_EventScript_TrainerBeam::
 	end
 
 ForteHallGym_EventScript_TrainerBeamDefeated::
-	addvar VAR_GYM_LIGHT_STATE, 1
-	call ForteHallGym_EventScript_LightStageRightMetatiles
+	setflag FLAG_FORTE_GYM_RIG_RIGHT
+	call ForteHallGym_EventScript_RecalculateLightVar
+	call ForteHallGym_EventScript_ApplyLitRigsFromFlags
 	call ForteHallGym_EventScript_UpdateAmbientFlash
 	playse SE_M_MEGA_KICK
 	msgbox ForteHallGym_Text_BeamAfter, MSGBOX_AUTOCLOSE
@@ -107,8 +150,9 @@ ForteHallGym_EventScript_TrainerTech::
 	end
 
 ForteHallGym_EventScript_TrainerTechDefeated::
-	addvar VAR_GYM_LIGHT_STATE, 1
-	call ForteHallGym_EventScript_LightStageCenterMetatiles
+	setflag FLAG_FORTE_GYM_RIG_CENTER
+	call ForteHallGym_EventScript_RecalculateLightVar
+	call ForteHallGym_EventScript_ApplyLitRigsFromFlags
 	call ForteHallGym_EventScript_UpdateAmbientFlash
 	playse SE_M_MEGA_KICK
 	msgbox ForteHallGym_Text_TechAfter, MSGBOX_AUTOCLOSE
@@ -212,5 +256,5 @@ ForteHallGym_Text_LeaderAfterBadge::
 
 ForteHallGym_Text_GymSign::
 	.string "FORTE HALL GYM\p"
-	.string "City relay stage. Light three rigs, earn\n"
-	.string "the Beacon Badge.$"
+	.string "City relay stage. Light three rigs in any\n"
+	.string "order, then earn the Beacon Badge.$"
