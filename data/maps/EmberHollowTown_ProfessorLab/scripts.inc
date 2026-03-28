@@ -37,7 +37,11 @@ EmberHollowTown_ProfessorLab_EventScript_Mira::
 	waitmovement 0
 	delay 15
 	playse SE_THUNDERBOLT
-	doshake 3, 2
+	setvar VAR_0x8004, 1
+	setvar VAR_0x8005, 1
+	setvar VAR_0x8006, 3
+	setvar VAR_0x8007, 2
+	special ShakeScreen
 	delay 10
 	msgbox EmberHollowTown_ProfessorLab_Text_MiraIntroAlarm, MSGBOX_DEFAULT
 	delay 10
