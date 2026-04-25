@@ -4,8 +4,8 @@ EmberHollowTown_ProfessorLab_MapScripts::
 EmberHollowTown_ProfessorLab_EventScript_Professor::
 	lock
 	faceplayer
-	goto_if_set FLAG_BEACONFALL_TUTORIAL_RIVAL_BEATEN, EmberHollowTown_ProfessorLab_EventScript_ProfessorAllDone
-	goto_if_set FLAG_BEACONFALL_STARTER_SELECTED, EmberHollowTown_ProfessorLab_EventScript_ProfessorAfterStarterNeedMira
+	goto_if_set FLAG_ROUTE_1_CLEARED, EmberHollowTown_ProfessorLab_EventScript_ProfessorAfterRoute
+	goto_if_set FLAG_BEACONFALL_STARTER_SELECTED, EmberHollowTown_ProfessorLab_EventScript_ProfessorAfterStarter
 	msgbox EmberHollowTown_ProfessorLab_Text_Intro, MSGBOX_DEFAULT
 	special ChooseBeaconfallStarter
 	waitstate
@@ -15,40 +15,25 @@ EmberHollowTown_ProfessorLab_EventScript_Professor::
 	release
 	end
 
-EmberHollowTown_ProfessorLab_EventScript_ProfessorAfterStarterNeedMira::
-	msgbox EmberHollowTown_ProfessorLab_Text_TalkToMira, MSGBOX_DEFAULT
+EmberHollowTown_ProfessorLab_EventScript_ProfessorAfterStarter::
+	msgbox EmberHollowTown_ProfessorLab_Text_AfterStarter, MSGBOX_DEFAULT
 	release
 	end
 
-EmberHollowTown_ProfessorLab_EventScript_ProfessorAllDone::
-	msgbox EmberHollowTown_ProfessorLab_Text_AfterTutorial, MSGBOX_DEFAULT
+EmberHollowTown_ProfessorLab_EventScript_ProfessorAfterRoute::
+	msgbox EmberHollowTown_ProfessorLab_Text_AfterRoute, MSGBOX_DEFAULT
 	release
 	end
 
 EmberHollowTown_ProfessorLab_EventScript_Mira::
 	lock
 	faceplayer
-	goto_if_set FLAG_BEACONFALL_TUTORIAL_RIVAL_BEATEN, EmberHollowTown_ProfessorLab_EventScript_MiraAfter
+	goto_if_set FLAG_ROUTE_1_CLEARED, EmberHollowTown_ProfessorLab_EventScript_MiraAfterRoute
 	goto_if_unset FLAG_BEACONFALL_STARTER_SELECTED, EmberHollowTown_ProfessorLab_EventScript_MiraBeforeStarter
 	special HealPlayerParty
-	@ Mira starts beside the Professor; face the player for the challenge (no walk-in snap)
 	turnobject LOCALID_MIRA, DIR_SOUTH
-	msgbox EmberHollowTown_ProfessorLab_Text_MiraIntroUrgent, MSGBOX_DEFAULT
-	playse SE_M_CHARGE
-	delay 10
-	playse SE_M_THUNDERBOLT
-	setvar VAR_0x8004, 1
-	setvar VAR_0x8005, 1
-	setvar VAR_0x8006, 3
-	setvar VAR_0x8007, 2
-	special ShakeScreen
-	delay 10
-	msgbox EmberHollowTown_ProfessorLab_Text_MiraIntroAlarm, MSGBOX_DEFAULT
-	delay 10
-	switch VAR_STARTER_MON
-	case 0, EmberHollowTown_ProfessorLab_EventScript_MiraBattleIfPlayerChoseBriarune
-	case 1, EmberHollowTown_ProfessorLab_EventScript_MiraBattleIfPlayerChosePyrevex
-	case 2, EmberHollowTown_ProfessorLab_EventScript_MiraBattleIfPlayerChoseKaratide
+	msgbox EmberHollowTown_ProfessorLab_Text_MiraRouteChallenge, MSGBOX_DEFAULT
+	release
 	end
 
 EmberHollowTown_ProfessorLab_EventScript_MiraBeforeStarter::
@@ -56,28 +41,7 @@ EmberHollowTown_ProfessorLab_EventScript_MiraBeforeStarter::
 	release
 	end
 
-EmberHollowTown_ProfessorLab_EventScript_MiraBattleIfPlayerChoseBriarune::
-	trainerbattle_single TRAINER_BEACONFALL_RIVAL1_CHIMCHAR, EmberHollowTown_ProfessorLab_Text_MiraIntro, EmberHollowTown_ProfessorLab_Text_MiraDefeat, EmberHollowTown_ProfessorLab_EventScript_MiraDefeated
-	end
-
-EmberHollowTown_ProfessorLab_EventScript_MiraBattleIfPlayerChosePyrevex::
-	trainerbattle_single TRAINER_BEACONFALL_RIVAL1_PIPLUP, EmberHollowTown_ProfessorLab_Text_MiraIntro, EmberHollowTown_ProfessorLab_Text_MiraDefeat, EmberHollowTown_ProfessorLab_EventScript_MiraDefeated
-	end
-
-EmberHollowTown_ProfessorLab_EventScript_MiraBattleIfPlayerChoseKaratide::
-	trainerbattle_single TRAINER_BEACONFALL_RIVAL1_TURTWIG, EmberHollowTown_ProfessorLab_Text_MiraIntro, EmberHollowTown_ProfessorLab_Text_MiraDefeat, EmberHollowTown_ProfessorLab_EventScript_MiraDefeated
-	end
-
-EmberHollowTown_ProfessorLab_EventScript_MiraDefeated::
-	setflag FLAG_BEACONFALL_TUTORIAL_RIVAL_BEATEN
-	setflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
-	setvar VAR_RIVAL_BATTLES, 1
-	updatefollowingmon
-	msgbox EmberHollowTown_ProfessorLab_Text_MiraAfter, MSGBOX_DEFAULT
-	release
-	end
-
-EmberHollowTown_ProfessorLab_EventScript_MiraAfter::
+EmberHollowTown_ProfessorLab_EventScript_MiraAfterRoute::
 	msgbox EmberHollowTown_ProfessorLab_Text_MiraLater, MSGBOX_DEFAULT
 	release
 	end
@@ -91,46 +55,32 @@ EmberHollowTown_ProfessorLab_Text_Intro::
 
 EmberHollowTown_ProfessorLab_Text_StarterDone::
 	.string "PROF. HOLLOW: Good. It's yours now.\p"
-	.string "MIRA's right here with me.\p"
-	.string "Talk to her when you're ready.$"
+	.string "MIRA is heading to Saltwind Path.\p"
+	.string "She'll test you once you leave town.$"
 
 EmberHollowTown_ProfessorLab_Text_SeeMira::
-	.string "MIRA's waiting with me.\p"
-	.string "She'll test you when you're ready.$"
+	.string "Talk to MIRA if you want a warning.\p"
+	.string "Then head through the north gate.$"
 
-EmberHollowTown_ProfessorLab_Text_TalkToMira::
-	.string "PROF. HOLLOW: MIRA doesn't waste time.\p"
-	.string "Go hear her out.$"
+EmberHollowTown_ProfessorLab_Text_AfterStarter::
+	.string "PROF. HOLLOW: North gate is open\n"
+	.string "now that you have a partner.\p"
+	.string "Expect MIRA on Saltwind Path.$"
 
-EmberHollowTown_ProfessorLab_Text_AfterTutorial::
-	.string "PROF. HOLLOW: Path opens outside town.\p"
-	.string "Move fast, but don't get careless.$"
+EmberHollowTown_ProfessorLab_Text_AfterRoute::
+	.string "PROF. HOLLOW: You made it through\n"
+	.string "MIRA's first route test.\p"
+	.string "Keep moving toward the grove.$"
 
 EmberHollowTown_ProfessorLab_Text_MiraBeforeStarter::
-	.string "MIRA: No partner, no battle.\p"
+	.string "MIRA: No partner, no test.\p"
 	.string "Talk to Prof. Hollow first.$"
 
-EmberHollowTown_ProfessorLab_Text_MiraIntroUrgent::
-	.string "MIRA: Enough waiting.\p"
-	.string "The blackout is spreading fast.$"
-
-EmberHollowTown_ProfessorLab_Text_MiraIntroAlarm::
-	.string "MIRA: One quick battle.\p"
-	.string "Show me you can handle pressure.$"
-
-EmberHollowTown_ProfessorLab_Text_MiraIntro::
-	.string "MIRA: Let's see what you've got.$"
-
-EmberHollowTown_ProfessorLab_Text_MiraDefeat::
-	.string "MIRA: Not bad.\p"
-	.string "Fresh out of the lab, too.$"
-
-EmberHollowTown_ProfessorLab_Text_MiraAfter::
-	.string "MIRA: You're clear.\p"
-	.string "The north gate will open up.\p"
-	.string "I'll catch up on Saltwind Path.$"
+EmberHollowTown_ProfessorLab_Text_MiraRouteChallenge::
+	.string "MIRA: Good. You picked one.\p"
+	.string "I'll test you on Saltwind Path.\p"
+	.string "Don't make me wait.$"
 
 EmberHollowTown_ProfessorLab_Text_MiraLater::
-	.string "MIRA: Don't linger.\p"
-	.string "Every minute without the beacons\n"
-	.string "is ugly out there.$"
+	.string "MIRA: Not bad on the route.\p"
+	.string "Now prove it wasn't luck.$"
