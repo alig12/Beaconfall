@@ -5,12 +5,33 @@ Route1_SaltwindPath_MapScripts::
 Route1_SaltwindPath_OnTransition::
 	end
 
+Route1_SaltwindPath_EventScript_Mira::
+	lock
+	faceplayer
+	goto_if_set FLAG_ROUTE_1_CLEARED, Route1_SaltwindPath_EventScript_MiraAfter
+	msgbox Route1_SaltwindPath_Text_MiraReady, MSGBOX_DEFAULT
+	release
+	end
+
+Route1_SaltwindPath_EventScript_MiraAfter::
+	msgbox Route1_SaltwindPath_Text_RivalAfter, MSGBOX_DEFAULT
+	release
+	end
+
 Route1_SaltwindPath_EventScript_RivalBattle::
 	lockall
+	goto_if_set FLAG_ROUTE_1_CLEARED, Route1_SaltwindPath_EventScript_RivalBattleAlreadyDone
+	turnobject LOCALID_ROUTE1_MIRA, DIR_SOUTH
+	msgbox Route1_SaltwindPath_Text_MiraChallenge, MSGBOX_DEFAULT
+	closemessage
 	switch VAR_STARTER_MON
 	case 0, Route1_SaltwindPath_EventScript_RivalBattleChimchar
 	case 1, Route1_SaltwindPath_EventScript_RivalBattlePiplup
 	case 2, Route1_SaltwindPath_EventScript_RivalBattleTurtwig
+	end
+
+Route1_SaltwindPath_EventScript_RivalBattleAlreadyDone::
+	releaseall
 	end
 
 Route1_SaltwindPath_EventScript_RivalBattleChimchar::
@@ -27,7 +48,9 @@ Route1_SaltwindPath_EventScript_RivalBattleTurtwig::
 
 Route1_SaltwindPath_EventScript_RivalBattleDefeated::
 	call BeaconfallChapter1_EventScript_MarkRoute1Cleared
-	msgbox Route1_SaltwindPath_Text_RivalAfter, MSGBOX_AUTOCLOSE
+	msgbox Route1_SaltwindPath_Text_RivalAfter, MSGBOX_DEFAULT
+	closemessage
+	removeobject LOCALID_ROUTE1_MIRA
 	releaseall
 	end
 
@@ -71,6 +94,17 @@ Route1_SaltwindPath_EventScript_TrainerCoachDefeated::
 Route1_SaltwindPath_EventScript_RouteSign::
 	msgbox Route1_SaltwindPath_Text_RouteSign, MSGBOX_SIGN
 	end
+
+Route1_SaltwindPath_Text_MiraReady::
+	.string "MIRA: There you are.\p"
+	.string "Step forward when you're ready.\p"
+	.string "I want to see how your partner\n"
+	.string "handles a real route fight.$"
+
+Route1_SaltwindPath_Text_MiraChallenge::
+	.string "MIRA: Good. No more lab talk.\p"
+	.string "Show me your first real battle\n"
+	.string "on Saltwind Path.$"
 
 Route1_SaltwindPath_Text_RivalIntro::
 	.string "You made it this far already?\p"
