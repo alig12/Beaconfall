@@ -65,7 +65,7 @@
       "y": 12,
       "elevation": 3,
       "var": "VAR_RIVAL_BATTLES",
-      "var_value": "2",
+      "var_value": "1",
       "script": "BrassfallCity_EventScript_RivalBattle"
     },
     {
@@ -74,7 +74,7 @@
       "y": 12,
       "elevation": 3,
       "var": "VAR_RIVAL_BATTLES",
-      "var_value": "2",
+      "var_value": "1",
       "script": "BrassfallCity_EventScript_RivalBattle"
     }
   ],
