@@ -12,6 +12,7 @@ BeaconfallChapter1_EventScript_ResetProgress::
 	clearflag FLAG_FORTE_GYM_RIG_LEFT
 	clearflag FLAG_FORTE_GYM_RIG_RIGHT
 	clearflag FLAG_FORTE_GYM_RIG_CENTER
+	clearflag FLAG_UNUSED_0x272
 	setvar VAR_RIVAL_BATTLES, 0
 	setvar VAR_GYM_LIGHT_STATE, 0
 	setvar VAR_STARTER_MON, 0
@@ -35,6 +36,14 @@ BeaconfallChapter1_EventScript_StartJourney::
 	setrespawn HEAL_LOCATION_EMBER_HOLLOW_PLAYERS_HOUSE_2F
 	@ Sync HGSS party follower (OW) now that the lead Pokémon is the starter; map reload also calls UpdateFollowingPokemon.
 	updatefollowingmon
+	return
+
+BeaconfallChapter1_EventScript_GiveFirstPokeBalls::
+	goto_if_set FLAG_UNUSED_0x272, BeaconfallChapter1_EventScript_GiveFirstPokeBallsDone
+	giveitem ITEM_POKE_BALL, 5
+	goto_if_eq VAR_RESULT, FALSE, BeaconfallChapter1_EventScript_GiveFirstPokeBallsDone
+	setflag FLAG_UNUSED_0x272
+BeaconfallChapter1_EventScript_GiveFirstPokeBallsDone::
 	return
 
 BeaconfallChapter1_EventScript_MarkRoute1Cleared::
