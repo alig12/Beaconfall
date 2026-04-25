@@ -4,16 +4,27 @@ ForteHallGym_MapScripts::
 	.byte 0
 
 ForteHallGym_OnLoad::
+	call ForteHallGym_EventScript_RepairBadgeLights
 	call ForteHallGym_EventScript_RecalculateLightVar
 	call ForteHallGym_EventScript_ApplyPersistedLights
 	end
 
 ForteHallGym_OnTransition::
+	call ForteHallGym_EventScript_RepairBadgeLights
 	call ForteHallGym_EventScript_RecalculateLightVar
 	call ForteHallGym_EventScript_UpdateAmbientFlash
 	end
 
-@ VAR_GYM_LIGHT_STATE = count of FLAG_FORTE_GYM_RIG_* (0–3). Flags persist which rigs are lit in any order.
+ForteHallGym_EventScript_RepairBadgeLights::
+	goto_if_unset FLAG_BADGE01_GET, ForteHallGym_EventScript_RepairBadgeLightsDone
+	setflag FLAG_FORTE_GYM_RIG_LEFT
+	setflag FLAG_FORTE_GYM_RIG_RIGHT
+	setflag FLAG_FORTE_GYM_RIG_CENTER
+ForteHallGym_EventScript_RepairBadgeLightsDone::
+	return
+
+@ VAR_GYM_LIGHT_STATE is derived from FLAG_FORTE_GYM_RIG_*.
+@ Do not mutate it directly outside this recalculation helper.
 ForteHallGym_EventScript_RecalculateLightVar::
 	setvar VAR_GYM_LIGHT_STATE, 0
 	goto_if_set FLAG_FORTE_GYM_RIG_LEFT, ForteHallGym_Recalc_AddOneA
@@ -162,7 +173,12 @@ ForteHallGym_EventScript_Leader::
 	lock
 	faceplayer
 	goto_if_set FLAG_BADGE01_GET, ForteHallGym_EventScript_LeaderAfterBadge
-	goto_if_ge VAR_GYM_LIGHT_STATE, 3, ForteHallGym_EventScript_LeaderBattle
+	goto_if_unset FLAG_FORTE_GYM_RIG_LEFT, ForteHallGym_EventScript_LeaderBlocked
+	goto_if_unset FLAG_FORTE_GYM_RIG_RIGHT, ForteHallGym_EventScript_LeaderBlocked
+	goto_if_unset FLAG_FORTE_GYM_RIG_CENTER, ForteHallGym_EventScript_LeaderBlocked
+	goto ForteHallGym_EventScript_LeaderBattle
+
+ForteHallGym_EventScript_LeaderBlocked::
 	msgbox ForteHallGym_Text_LeaderBlocked, MSGBOX_DEFAULT
 	release
 	end
@@ -174,6 +190,12 @@ ForteHallGym_EventScript_LeaderBattle::
 
 ForteHallGym_EventScript_LeaderDefeated::
 	setflag FLAG_BADGE01_GET
+	setflag FLAG_FORTE_GYM_RIG_LEFT
+	setflag FLAG_FORTE_GYM_RIG_RIGHT
+	setflag FLAG_FORTE_GYM_RIG_CENTER
+	call ForteHallGym_EventScript_RecalculateLightVar
+	call ForteHallGym_EventScript_ApplyAllStageLights
+	call ForteHallGym_EventScript_UpdateAmbientFlash
 	message ForteHallGym_Text_ReceivedBeaconBadge
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
