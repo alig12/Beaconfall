@@ -11,11 +11,13 @@ EmberHollowTown_ProfessorLab_EventScript_Professor::
 	waitstate
 	call BeaconfallChapter1_EventScript_StartJourney
 	msgbox EmberHollowTown_ProfessorLab_Text_StarterDone, MSGBOX_DEFAULT
+	call BeaconfallChapter1_EventScript_GiveFirstPokeBalls
 	msgbox EmberHollowTown_ProfessorLab_Text_SeeMira, MSGBOX_DEFAULT
 	release
 	end
 
 EmberHollowTown_ProfessorLab_EventScript_ProfessorAfterStarter::
+	call BeaconfallChapter1_EventScript_GiveFirstPokeBalls
 	msgbox EmberHollowTown_ProfessorLab_Text_AfterStarter, MSGBOX_DEFAULT
 	release
 	end
@@ -55,16 +57,20 @@ EmberHollowTown_ProfessorLab_Text_Intro::
 
 EmberHollowTown_ProfessorLab_Text_StarterDone::
 	.string "PROF. HOLLOW: Good. It's yours now.\p"
-	.string "MIRA is heading to Saltwind Path.\p"
-	.string "She'll test you once you leave town.$"
+	.string "Take these Poké Balls too.\p"
+	.string "If the route stirs, catch what you can.$"
 
 EmberHollowTown_ProfessorLab_Text_SeeMira::
-	.string "Talk to MIRA if you want a warning.\p"
-	.string "Then head through the north gate.$"
+	.string "MIRA is heading to Saltwind Path.\p"
+	.string "She'll test you once you leave town.\p"
+	.string "Talk to her if you want a warning,\n"
+	.string "then head through the north gate.$"
 
 EmberHollowTown_ProfessorLab_Text_AfterStarter::
 	.string "PROF. HOLLOW: North gate is open\n"
 	.string "now that you have a partner.\p"
+	.string "If I missed your catching kit,\n"
+	.string "take it now.\p"
 	.string "Expect MIRA on Saltwind Path.$"
 
 EmberHollowTown_ProfessorLab_Text_AfterRoute::
