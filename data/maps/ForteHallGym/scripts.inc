@@ -69,10 +69,13 @@ ForteHallGym_EventScript_FlashClear::
 	return
 
 ForteHallGym_EventScript_ApplyPersistedLights::
-	goto_if_set FLAG_BADGE01_GET, ForteHallGym_EventScript_ApplyAllStageLights
+	goto_if_set FLAG_BADGE01_GET, ForteHallGym_EventScript_ApplyPersistedAllStageLights
 	call ForteHallGym_EventScript_ApplyLitRigsFromFlags
-ForteHallGym_EventScript_ApplyLightsDone::
-	end
+	return
+
+ForteHallGym_EventScript_ApplyPersistedAllStageLights::
+	call ForteHallGym_EventScript_ApplyAllStageLights
+	return
 
 ForteHallGym_EventScript_ApplyLitRigsFromFlags::
 	goto_if_set FLAG_FORTE_GYM_RIG_LEFT, ForteHallGym_ApplyDoLeft
@@ -99,7 +102,7 @@ ForteHallGym_EventScript_ApplyAllStageLights::
 	call ForteHallGym_EventScript_LightStageLeftMetatiles
 	call ForteHallGym_EventScript_LightStageRightMetatiles
 	call ForteHallGym_EventScript_LightStageCenterMetatiles
-	end
+	return
 
 @ Stage wash lights (Petalburg Gym tileset): left / right / center markers.
 ForteHallGym_EventScript_LightStageLeftMetatiles::
