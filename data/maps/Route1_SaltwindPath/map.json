@@ -90,7 +90,7 @@
       "y": 19,
       "elevation": 3,
       "var": "VAR_RIVAL_BATTLES",
-      "var_value": "1",
+      "var_value": "0",
       "script": "Route1_SaltwindPath_EventScript_RivalBattle"
     },
     {
@@ -99,7 +99,7 @@
       "y": 19,
       "elevation": 3,
       "var": "VAR_RIVAL_BATTLES",
-      "var_value": "1",
+      "var_value": "0",
       "script": "Route1_SaltwindPath_EventScript_RivalBattle"
     }
   ],
