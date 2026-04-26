@@ -394,6 +394,46 @@ def validate_forte_hall_three_rigs():
     return ok
 
 
+def validate_progression_state_machine():
+    """Check canonical progression repair and state-machine wiring."""
+    chapter = load_text("data/scripts/chapter_1.inc")
+    ember = load_text("data/maps/EmberHollowTown/scripts.inc")
+    route1 = load_text("data/maps/Route1_SaltwindPath/scripts.inc")
+    grove = load_text("data/maps/CinderReedGrove/scripts.inc")
+    brassfall = load_text("data/maps/BrassfallCity/scripts.inc")
+    gym = load_text("data/maps/ForteHallGym/scripts.inc")
+
+    ok = True
+    ok &= require_text(chapter, r"VAR_RIVAL_BATTLES:[\s\S]*0 = Route 1 rival pending[\s\S]*1 = Route 1 cleared; Brassfall rival pending[\s\S]*2 = Brassfall rival cleared", "documented VAR_RIVAL_BATTLES meanings")
+    ok &= require_text(chapter, r"BeaconfallChapter1_EventScript_RepairProgression::", "shared Chapter 1 progression repair helper")
+    ok &= require_text(chapter, r"RepairChapterComplete::[\s\S]*setflag\s+FLAG_BRASSFALL_CITY_ENTERED[\s\S]*setflag\s+FLAG_CINDER_REED_GROVE_CLEARED[\s\S]*setflag\s+FLAG_ROUTE_1_CLEARED[\s\S]*setvar\s+VAR_RIVAL_BATTLES,\s*2", "chapter-complete repair implies earlier states")
+    ok &= require_text(chapter, r"RepairBrassfallEntered::[\s\S]*setflag\s+FLAG_CINDER_REED_GROVE_CLEARED[\s\S]*setflag\s+FLAG_ROUTE_1_CLEARED[\s\S]*setvar\s+VAR_RIVAL_BATTLES,\s*2", "Brassfall repair implies previous states")
+    ok &= require_text(chapter, r"RepairGroveCleared::[\s\S]*setflag\s+FLAG_ROUTE_1_CLEARED[\s\S]*setvar\s+VAR_RIVAL_BATTLES,\s*1", "grove repair implies Route 1 clear")
+    ok &= require_text(chapter, r"RepairRoute1Cleared::[\s\S]*setflag\s+FLAG_EMBER_NORTH_GATE_TWIN_MOVED[\s\S]*setvar\s+VAR_RIVAL_BATTLES,\s*1", "Route 1 repair opens Ember gate")
+
+    ok &= require_text(chapter, r"MarkRoute1Cleared::[\s\S]*setflag\s+FLAG_ROUTE_1_CLEARED[\s\S]*setflag\s+FLAG_EMBER_NORTH_GATE_TWIN_MOVED[\s\S]*setvar\s+VAR_RIVAL_BATTLES,\s*1", "Route 1 marker writes implied state")
+    ok &= require_text(chapter, r"MarkGroveCleared::[\s\S]*setflag\s+FLAG_CINDER_REED_GROVE_CLEARED[\s\S]*setflag\s+FLAG_ROUTE_1_CLEARED[\s\S]*setvar\s+VAR_RIVAL_BATTLES,\s*1", "grove marker writes implied state")
+    ok &= require_text(chapter, r"MarkBrassfallEntered::[\s\S]*setflag\s+FLAG_BRASSFALL_CITY_ENTERED[\s\S]*setflag\s+FLAG_CINDER_REED_GROVE_CLEARED[\s\S]*setflag\s+FLAG_ROUTE_1_CLEARED[\s\S]*setvar\s+VAR_RIVAL_BATTLES,\s*2", "Brassfall marker writes implied state")
+    ok &= require_text(chapter, r"CompleteChapter::[\s\S]*setflag\s+FLAG_CHAPTER_1_COMPLETE[\s\S]*setflag\s+FLAG_BRASSFALL_CITY_ENTERED[\s\S]*setflag\s+FLAG_CINDER_REED_GROVE_CLEARED[\s\S]*setflag\s+FLAG_ROUTE_1_CLEARED[\s\S]*setvar\s+VAR_RIVAL_BATTLES,\s*2", "chapter completion writes implied state")
+
+    for map_name, scripts in [
+        ("EmberHollowTown", ember),
+        ("Route1_SaltwindPath", route1),
+        ("CinderReedGrove", grove),
+        ("BrassfallCity", brassfall),
+    ]:
+        ok &= require_text(scripts, r"OnTransition::[\s\S]{0,160}call\s+BeaconfallChapter1_EventScript_RepairProgression", f"{map_name} transition calls shared progression repair")
+
+    ok &= require_text(gym, r"ForteHallGym_OnLoad::[\s\S]{0,160}call\s+BeaconfallChapter1_EventScript_RepairProgression", "Forte Hall load calls shared progression repair")
+    ok &= require_text(gym, r"ForteHallGym_OnTransition::[\s\S]{0,160}call\s+BeaconfallChapter1_EventScript_RepairProgression", "Forte Hall transition calls shared progression repair")
+    ok &= require_text(ember, r"RepairOldTutorialGate::[\s\S]*clearflag\s+FLAG_BEACONFALL_TUTORIAL_RIVAL_BEATEN[\s\S]*setvar\s+VAR_RIVAL_BATTLES,\s*0", "old tutorial-rival gate repair clears stale flag and keeps Route 1 rival pending")
+    ok &= reject_text(brassfall, r"BrassfallCity_OnTransition_RivalPending", "duplicated Brassfall local rival-state repair")
+
+    if ok:
+        print("✓ Chapter 1 progression state machine is centralized and repaired on map transitions")
+    return ok
+
+
 def main():
     """Run all validators."""
     print("\n" + "=" * 60)
@@ -412,6 +452,7 @@ def main():
         validate_route1_rival_scene,
         validate_starter_poke_balls,
         validate_forte_hall_three_rigs,
+        validate_progression_state_machine,
     ]
 
     results = []
