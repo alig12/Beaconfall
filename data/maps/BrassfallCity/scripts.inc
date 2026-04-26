@@ -3,17 +3,7 @@ BrassfallCity_MapScripts::
 	.byte 0
 
 BrassfallCity_OnTransition::
-	goto_if_set FLAG_BRASSFALL_CITY_ENTERED, BrassfallCity_OnTransition_RivalDone
-	goto_if_set FLAG_ROUTE_1_CLEARED, BrassfallCity_OnTransition_RivalPending
-	goto BrassfallCity_OnTransition_Weather
-
-BrassfallCity_OnTransition_RivalPending::
-	setvar VAR_RIVAL_BATTLES, 1
-	goto BrassfallCity_OnTransition_Weather
-
-BrassfallCity_OnTransition_RivalDone::
-	setvar VAR_RIVAL_BATTLES, 2
-BrassfallCity_OnTransition_Weather::
+	call BeaconfallChapter1_EventScript_RepairProgression
 	setweather WEATHER_SHADE
 	doweather
 	end
