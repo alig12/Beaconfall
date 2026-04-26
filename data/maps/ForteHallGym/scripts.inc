@@ -4,12 +4,14 @@ ForteHallGym_MapScripts::
 	.byte 0
 
 ForteHallGym_OnLoad::
+	call BeaconfallChapter1_EventScript_RepairProgression
 	call ForteHallGym_EventScript_RepairBadgeLights
 	call ForteHallGym_EventScript_RecalculateLightVar
 	call ForteHallGym_EventScript_ApplyPersistedLights
 	end
 
 ForteHallGym_OnTransition::
+	call BeaconfallChapter1_EventScript_RepairProgression
 	call ForteHallGym_EventScript_RepairBadgeLights
 	call ForteHallGym_EventScript_RecalculateLightVar
 	call ForteHallGym_EventScript_UpdateAmbientFlash
