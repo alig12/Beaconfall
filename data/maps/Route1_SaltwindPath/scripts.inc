@@ -3,6 +3,7 @@ Route1_SaltwindPath_MapScripts::
 	.byte 0
 
 Route1_SaltwindPath_OnTransition::
+	call BeaconfallChapter1_EventScript_RepairProgression
 	end
 
 Route1_SaltwindPath_EventScript_Mira::
