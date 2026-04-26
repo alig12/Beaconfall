@@ -3,6 +3,7 @@ CinderReedGrove_MapScripts::
 	.byte 0
 
 CinderReedGrove_OnTransition::
+	call BeaconfallChapter1_EventScript_RepairProgression
 	setweather WEATHER_SHADE
 	doweather
 	end
