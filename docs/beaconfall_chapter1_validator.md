@@ -69,6 +69,13 @@ python3 dev_scripts/beaconfall_ch1_validate.py
    - Confirms Vera checks the three rig flags directly.
    - Confirms `VAR_GYM_LIGHT_STATE` remains derived helper state, not the unlock source.
 
+12. **Progression State Machine**
+   - Confirms `VAR_RIVAL_BATTLES` meanings are documented.
+   - Confirms the shared repair helper exists.
+   - Confirms later flags imply earlier flags.
+   - Confirms each Chapter 1 map transition calls the shared repair helper.
+   - Confirms stale tutorial-rival gate state is repaired without skipping Route 1 Rival Battle 1.
+
 ## Current Chapter 1 Flow
 
 The intended player-facing flow is:
@@ -84,6 +91,34 @@ The intended player-facing flow is:
 9. Brassfall City arrival and Rival Battle 2.
 10. Forte Hall Gym three-rig puzzle.
 11. Vera battle, Beacon Badge, and Chapter 1 completion.
+
+## Progression State Machine
+
+`VAR_RIVAL_BATTLES` has three valid meanings:
+
+```text
+0 = Route 1 rival pending
+1 = Route 1 cleared; Brassfall rival pending
+2 = Brassfall rival cleared
+```
+
+Later chapter flags imply earlier flags:
+
+```text
+FLAG_CHAPTER_1_COMPLETE
+  -> FLAG_BRASSFALL_CITY_ENTERED
+  -> FLAG_CINDER_REED_GROVE_CLEARED
+  -> FLAG_ROUTE_1_CLEARED
+  -> FLAG_EMBER_NORTH_GATE_TWIN_MOVED
+```
+
+Every Chapter 1 map transition should call:
+
+```asm
+call BeaconfallChapter1_EventScript_RepairProgression
+```
+
+This keeps old saves, partial saves, and branch-switch saves from re-opening cleared rival battles or re-closing gates.
 
 ## What Static Validation Cannot Prove
 
