@@ -1,3 +1,16 @@
+@ Chapter 1 progression state machine.
+@
+@ VAR_RIVAL_BATTLES:
+@ 0 = Route 1 rival pending
+@ 1 = Route 1 cleared; Brassfall rival pending
+@ 2 = Brassfall rival cleared
+@
+@ Later chapter flags imply earlier flags:
+@ FLAG_CHAPTER_1_COMPLETE -> FLAG_BRASSFALL_CITY_ENTERED
+@ FLAG_BRASSFALL_CITY_ENTERED -> FLAG_CINDER_REED_GROVE_CLEARED
+@ FLAG_CINDER_REED_GROVE_CLEARED -> FLAG_ROUTE_1_CLEARED
+@ FLAG_ROUTE_1_CLEARED -> FLAG_EMBER_NORTH_GATE_TWIN_MOVED
+
 BeaconfallChapter1_EventScript_ResetProgress::
 	clearflag FLAG_BEACONFALL_STARTER_SELECTED
 	clearflag FLAG_ROUTE_1_CLEARED
@@ -38,6 +51,44 @@ BeaconfallChapter1_EventScript_StartJourney::
 	updatefollowingmon
 	return
 
+BeaconfallChapter1_EventScript_RepairProgression::
+	goto_if_set FLAG_CHAPTER_1_COMPLETE, BeaconfallChapter1_EventScript_RepairChapterComplete
+	goto_if_set FLAG_BRASSFALL_CITY_ENTERED, BeaconfallChapter1_EventScript_RepairBrassfallEntered
+	goto_if_set FLAG_CINDER_REED_GROVE_CLEARED, BeaconfallChapter1_EventScript_RepairGroveCleared
+	goto_if_set FLAG_ROUTE_1_CLEARED, BeaconfallChapter1_EventScript_RepairRoute1Cleared
+	goto_if_set FLAG_BEACONFALL_STARTER_SELECTED, BeaconfallChapter1_EventScript_RepairStarterOnly
+	return
+
+BeaconfallChapter1_EventScript_RepairChapterComplete::
+	setflag FLAG_BRASSFALL_CITY_ENTERED
+	setflag FLAG_CINDER_REED_GROVE_CLEARED
+	setflag FLAG_ROUTE_1_CLEARED
+	setflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
+	setvar VAR_RIVAL_BATTLES, 2
+	return
+
+BeaconfallChapter1_EventScript_RepairBrassfallEntered::
+	setflag FLAG_CINDER_REED_GROVE_CLEARED
+	setflag FLAG_ROUTE_1_CLEARED
+	setflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
+	setvar VAR_RIVAL_BATTLES, 2
+	return
+
+BeaconfallChapter1_EventScript_RepairGroveCleared::
+	setflag FLAG_ROUTE_1_CLEARED
+	setflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
+	setvar VAR_RIVAL_BATTLES, 1
+	return
+
+BeaconfallChapter1_EventScript_RepairRoute1Cleared::
+	setflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
+	setvar VAR_RIVAL_BATTLES, 1
+	return
+
+BeaconfallChapter1_EventScript_RepairStarterOnly::
+	setvar VAR_RIVAL_BATTLES, 0
+	return
+
 BeaconfallChapter1_EventScript_GiveFirstPokeBalls::
 	goto_if_set FLAG_UNUSED_0x272, BeaconfallChapter1_EventScript_GiveFirstPokeBallsDone
 	giveitem ITEM_POKE_BALL, 5
@@ -48,18 +99,30 @@ BeaconfallChapter1_EventScript_GiveFirstPokeBallsDone::
 
 BeaconfallChapter1_EventScript_MarkRoute1Cleared::
 	setflag FLAG_ROUTE_1_CLEARED
+	setflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
 	setvar VAR_RIVAL_BATTLES, 1
 	return
 
 BeaconfallChapter1_EventScript_MarkGroveCleared::
 	setflag FLAG_CINDER_REED_GROVE_CLEARED
+	setflag FLAG_ROUTE_1_CLEARED
+	setflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
+	setvar VAR_RIVAL_BATTLES, 1
 	return
 
 BeaconfallChapter1_EventScript_MarkBrassfallEntered::
 	setflag FLAG_BRASSFALL_CITY_ENTERED
+	setflag FLAG_CINDER_REED_GROVE_CLEARED
+	setflag FLAG_ROUTE_1_CLEARED
+	setflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
 	setvar VAR_RIVAL_BATTLES, 2
 	return
 
 BeaconfallChapter1_EventScript_CompleteChapter::
 	setflag FLAG_CHAPTER_1_COMPLETE
+	setflag FLAG_BRASSFALL_CITY_ENTERED
+	setflag FLAG_CINDER_REED_GROVE_CLEARED
+	setflag FLAG_ROUTE_1_CLEARED
+	setflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
+	setvar VAR_RIVAL_BATTLES, 2
 	return
