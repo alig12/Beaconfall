@@ -6,21 +6,19 @@ EmberHollowTown_MapScripts::
 @ Weather only here. Blackout text runs from ON_FRAME so msgbox does not run inside
 @ RunScriptImmediately (transition scripts), which cannot yield safely and can crash on the next warp.
 EmberHollowTown_OnTransition::
-	@ Save repair: older builds used a lab tutorial-rival flag to open this gate.
-	@ Route/city/chapter flags always mean the player has already left town safely.
-	goto_if_set FLAG_ROUTE_1_CLEARED, EmberHollowTown_OnTransition_RepairGateOpen
-	goto_if_set FLAG_BRASSFALL_CITY_ENTERED, EmberHollowTown_OnTransition_RepairGateOpen
-	goto_if_set FLAG_CHAPTER_1_COMPLETE, EmberHollowTown_OnTransition_RepairGateOpen
+	call BeaconfallChapter1_EventScript_RepairProgression
+	@ Save repair: older PR builds used a lab tutorial-rival flag to open this gate.
+	@ If Route 1 is already cleared, the shared repair helper owns the state and must not be downgraded.
+	goto_if_set FLAG_ROUTE_1_CLEARED, EmberHollowTown_OnTransition_Weather
 	goto_if_set FLAG_BEACONFALL_TUTORIAL_RIVAL_BEATEN, EmberHollowTown_OnTransition_RepairOldTutorialGate
 	goto EmberHollowTown_OnTransition_Weather
 
 EmberHollowTown_OnTransition_RepairOldTutorialGate::
 	setflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
+	clearflag FLAG_BEACONFALL_TUTORIAL_RIVAL_BEATEN
 	setvar VAR_RIVAL_BATTLES, 0
 	goto EmberHollowTown_OnTransition_Weather
 
-EmberHollowTown_OnTransition_RepairGateOpen::
-	setflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
 EmberHollowTown_OnTransition_Weather::
 	goto_if_set FLAG_EMBER_NORTH_GATE_TWIN_MOVED, EmberHollowTown_OnTransition_Bright
 	setweather WEATHER_SHADE
