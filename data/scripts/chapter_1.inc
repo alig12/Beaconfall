@@ -5,11 +5,13 @@
 @ 1 = Route 1 cleared; Brassfall rival pending
 @ 2 = Brassfall rival cleared
 @
-@ Later chapter flags imply earlier flags:
+@ Later chapter flags imply earlier flags during repair only:
 @ FLAG_CHAPTER_1_COMPLETE -> FLAG_BRASSFALL_CITY_ENTERED
 @ FLAG_BRASSFALL_CITY_ENTERED -> FLAG_CINDER_REED_GROVE_CLEARED
 @ FLAG_CINDER_REED_GROVE_CLEARED -> FLAG_ROUTE_1_CLEARED
 @ FLAG_ROUTE_1_CLEARED -> FLAG_EMBER_NORTH_GATE_TWIN_MOVED
+@
+@ Normal marker scripts stay conservative so they do not mask pathing or sequence bugs.
 
 BeaconfallChapter1_EventScript_ResetProgress::
 	clearflag FLAG_BEACONFALL_STARTER_SELECTED
@@ -105,16 +107,10 @@ BeaconfallChapter1_EventScript_MarkRoute1Cleared::
 
 BeaconfallChapter1_EventScript_MarkGroveCleared::
 	setflag FLAG_CINDER_REED_GROVE_CLEARED
-	setflag FLAG_ROUTE_1_CLEARED
-	setflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
-	setvar VAR_RIVAL_BATTLES, 1
 	return
 
 BeaconfallChapter1_EventScript_MarkBrassfallEntered::
 	setflag FLAG_BRASSFALL_CITY_ENTERED
-	setflag FLAG_CINDER_REED_GROVE_CLEARED
-	setflag FLAG_ROUTE_1_CLEARED
-	setflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
 	setvar VAR_RIVAL_BATTLES, 2
 	return
 
