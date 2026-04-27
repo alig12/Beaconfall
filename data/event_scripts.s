@@ -135,6 +135,7 @@ gStdScripts_End::
 	.include "data/maps/SootopolisCity/scripts.inc"
 	.include "data/maps/EverGrandeCity/scripts.inc"
 	.include "data/maps/LittlerootTown/scripts.inc"
+#if !IS_FRLG
 	.include "data/maps/EmberHollowTown/scripts.inc"
 	.include "data/maps/EmberHollowTown_PlayersHouse_2F/scripts.inc"
 	.include "data/maps/EmberHollowTown_PlayersHouse_1F/scripts.inc"
@@ -143,6 +144,7 @@ gStdScripts_End::
 	.include "data/maps/CinderReedGrove/scripts.inc"
 	.include "data/maps/BrassfallCity/scripts.inc"
 	.include "data/maps/ForteHallGym/scripts.inc"
+#endif
 	.include "data/maps/OldaleTown/scripts.inc"
 	.include "data/maps/DewfordTown/scripts.inc"
 	.include "data/maps/LavaridgeTown/scripts.inc"
@@ -1054,7 +1056,9 @@ gStdScripts_End::
 
 	.include "data/scripts/std_msgbox.inc"
 	.include "data/scripts/trainer_battle.inc"
+#if !IS_FRLG
 	.include "data/scripts/chapter_1.inc"
+#endif
 	.include "data/scripts/new_game.inc"
 	.include "data/scripts/hall_of_fame.inc"
 	.include "data/scripts/hall_of_fame_frlg.inc"
