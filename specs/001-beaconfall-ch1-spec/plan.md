@@ -179,7 +179,7 @@ include/constants/vars.h
 ## Scope Lock Notes
 
 - Chapter 1 is fixed to five maps, two rival battles, one badge, and no postgame.
-- The starter trio is fixed to Growlithe, Wooper, and Budew.
+- The starter trio is fixed to Turtwig, Chimchar, and Piplup.
 - Trainer count stays at or below 10 and wild species stay in the 20-30 range.
 - Fusion mechanics, field effects, open-world scaling, multiplayer, and postgame content are out
   of scope.

@@ -664,20 +664,20 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_123_RARE_CANDY                (FLAG_HIDDEN_ITEMS_START + 0x6E)
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
-#define FLAG_BEACONFALL_STARTER_SELECTED 0x264
+#define FLAG_BEACONFALL_STARTER_SELECTED 0x264 // Chapter 1 starter gate
 #define FLAG_ROUTE_1_CLEARED             0x265
 #define FLAG_CINDER_REED_GROVE_CLEARED   0x266
 #define FLAG_BRASSFALL_CITY_ENTERED      0x267
 #define FLAG_CHAPTER_1_COMPLETE          0x268
-#define FLAG_UNUSED_0x269                0x269 // Unused Flag
-#define FLAG_UNUSED_0x26A  0x26A // Unused Flag
-#define FLAG_UNUSED_0x26B  0x26B // Unused Flag
-#define FLAG_UNUSED_0x26C  0x26C // Unused Flag
-#define FLAG_UNUSED_0x26D  0x26D // Unused Flag
-#define FLAG_UNUSED_0x26E  0x26E // Unused Flag
-#define FLAG_UNUSED_0x26F  0x26F // Unused Flag
-#define FLAG_UNUSED_0x270  0x270 // Unused Flag
-#define FLAG_UNUSED_0x271  0x271 // Unused Flag
+#define FLAG_CHAPTER_2_HOOK_SHOWN        0x269
+#define FLAG_BEACONFALL_BLACKOUT_INTRO    0x26A // Legacy blackout intro marker; VAR_BEACONFALL_BLACKOUT_MSG drives the one-shot script
+#define FLAG_BEACONFALL_TUTORIAL_RIVAL_BEATEN 0x26B
+#define FLAG_BEACONFALL_GROVE_LAMP_A       0x26C
+#define FLAG_BEACONFALL_GROVE_LAMP_B       0x26D
+#define FLAG_EMBER_NORTH_GATE_TWIN_MOVED   0x26E // One twin stepped aside; path to Route 1 unblocked
+#define FLAG_FORTE_GYM_RIG_LEFT            0x26F // Forte Hall gym: left rig lit (persisted puzzle state)
+#define FLAG_FORTE_GYM_RIG_RIGHT           0x270 // Forte Hall gym: right rig lit
+#define FLAG_FORTE_GYM_RIG_CENTER          0x271 // Forte Hall gym: center rig lit
 #define FLAG_UNUSED_0x272  0x272 // Unused Flag
 #define FLAG_UNUSED_0x273  0x273 // Unused Flag
 #define FLAG_UNUSED_0x274  0x274 // Unused Flag

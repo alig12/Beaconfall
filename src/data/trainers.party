@@ -16874,29 +16874,111 @@ Kyogre
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_BEACONFALL_RIVAL1 ===
-Name: RIVAL1
-Class: Rival
-Pic: RS Brendan
-Gender: Male
-Music: Male
-Double Battle: No
-
-Poochyena
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_BEACONFALL_RIVAL2 ===
-Name: RIVAL2
+=== TRAINER_BEACONFALL_RIVAL1_CHIMCHAR ===
+Name: MIRA
 Class: Rival
 Pic: RS May
 Gender: Female
 Music: Female
 Double Battle: No
+AI: Basic Trainer / HP Aware
 
-Taillow
+Pyrevex @ Oran Berry
+Level: 5
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Ember
+- Scratch
+
+=== TRAINER_BEACONFALL_RIVAL1_PIPLUP ===
+Name: MIRA
+Class: Rival
+Pic: RS May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer / HP Aware
+
+Karatide @ Oran Berry
+Level: 5
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Water Gun
+- Pound
+
+=== TRAINER_BEACONFALL_RIVAL1_TURTWIG ===
+Name: MIRA
+Class: Rival
+Pic: RS May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer / HP Aware
+
+Briarune @ Oran Berry
+Level: 5
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Absorb
+- Tackle
+
+=== TRAINER_BEACONFALL_RIVAL2_CHIMCHAR ===
+Name: MIRA
+Class: Rival
+Pic: RS May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer / HP Aware
+
+Pidgey
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Pyrevex @ Oran Berry
 Level: 10
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Ember
+- Scratch
+- Leer
+- Taunt
+
+=== TRAINER_BEACONFALL_RIVAL2_PIPLUP ===
+Name: MIRA
+Class: Rival
+Pic: RS May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer / HP Aware
+
+Pidgey
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Karatide @ Oran Berry
+Level: 10
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Water Gun
+- Pound
+- Growl
+
+=== TRAINER_BEACONFALL_RIVAL2_TURTWIG ===
+Name: MIRA
+Class: Rival
+Pic: RS May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer / HP Aware
+
+Pidgey
+Level: 8
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+
+Briarune @ Oran Berry
+Level: 10
+IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Absorb
+- Tackle
+- Withdraw
 
 === TRAINER_BEACONFALL_ROUTE_SCOUT ===
 Name: SCOUT
@@ -16907,7 +16989,11 @@ Music: Male
 Double Battle: No
 
 Wurmple
-Level: 3
+Level: 4
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Venonat
+Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BEACONFALL_ROUTE_SAILOR ===
@@ -16919,7 +17005,11 @@ Music: Male
 Double Battle: No
 
 Wingull
-Level: 4
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Lotad
+Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BEACONFALL_GROVE_REED ===
@@ -16935,53 +17025,89 @@ Level: 6
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BEACONFALL_GROVE_MOSS ===
-Name: MOSS
-Class: Lass
-Pic: Lass
-Gender: Female
-Music: Female
+Name: SMUGGLER
+Class: Team Aqua
+Pic: Aqua Grunt M
+Gender: Male
+Music: Male
 Double Battle: No
 
-Seedot
+Poochyena
 Level: 6
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
+Corphish
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
 === TRAINER_BEACONFALL_GYM_LAMP ===
-Name: LAMP
+Name: KIT
 Class: Guitarist
 Pic: Guitarist
 Gender: Male
 Music: Male
 Double Battle: No
 
-Magnemite
-Level: 12
+Whismur
+Level: 11
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BEACONFALL_GYM_BEAM ===
-Name: BEAM
+Name: RAYNE
 Class: Lass
 Pic: Lass
 Gender: Female
 Music: Female
 Double Battle: No
 
-Voltorb
-Level: 12
+Slakoth
+Level: 11
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BEACONFALL_LEADER ===
-Name: CAPTAIN
+Name: VERA
 Class: Leader
 Pic: Leader Wattson
+Gender: Female
+Music: Female
+Double Battle: No
+
+Lillipup
+Level: 12
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Aipom
+Level: 13
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Smeargle
+Level: 14
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BEACONFALL_GYM_TECH ===
+Name: JAX
+Class: Guitarist
+Pic: Guitarist
 Gender: Male
 Music: Male
 Double Battle: No
 
-Magnemite
-Level: 14
+Loudred
+Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Voltorb
-Level: 15
+=== TRAINER_BEACONFALL_ROUTE_COACH ===
+Name: COACH
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Male
+Double Battle: No
+
+Zigzagoon
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Pidgey
+Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe

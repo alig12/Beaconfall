@@ -18,6 +18,7 @@
 #include "menu.h"
 #include "menu_helpers.h"
 #include "overworld.h"
+#include "field_control_avatar.h"
 #include "palette.h"
 #include "party_menu.h"
 #include "player_pc.h"
@@ -74,6 +75,8 @@ enum {
 #define NOT_SWAPPING 0xFF
 
 #define SWAP_LINE_LENGTH 7
+
+static bool8 sPlayerPCOpenedFromPartyMenu;
 
 struct ItemStorageMenu
 {
@@ -382,6 +385,12 @@ void PlayerPC(void)
     DisplayItemMessageOnField(CreateTask(TaskDummy, 0), gText_WhatWouldYouLike, InitPlayerPCMenu);
 }
 
+void PlayerPCFromPartyMenu(void)
+{
+    sPlayerPCOpenedFromPartyMenu = TRUE;
+    PlayerPC();
+}
+
 #define tUsedSlots  data[1]
 #define tQuantity   data[2]
 #define tInTossMenu data[3]
@@ -500,7 +509,15 @@ static void PlayerPC_TurnOff(u8 taskId)
     }
     else
     {
-        ScriptContext_Enable();
+        if (sPlayerPCOpenedFromPartyMenu)
+        {
+            sPlayerPCOpenedFromPartyMenu = FALSE;
+            UnlockPlayerFieldControls();
+        }
+        else
+        {
+            ScriptContext_Enable();
+        }
     }
     DestroyTask(taskId);
 }

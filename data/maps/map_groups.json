@@ -862,7 +862,10 @@
     "Route1_SaltwindPath",
     "CinderReedGrove",
     "BrassfallCity",
-    "ForteHallGym"
+    "ForteHallGym",
+    "EmberHollowTown_PlayersHouse_2F",
+    "EmberHollowTown_PlayersHouse_1F",
+    "EmberHollowTown_ProfessorLab"
   ],
   "gMapGroup_TownsAndRoutes_Frlg": [
     "PalletTown_Frlg",

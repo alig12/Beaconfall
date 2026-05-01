@@ -1,24 +1,107 @@
+@ Chapter 1 progression state machine.
+@
+@ VAR_RIVAL_BATTLES:
+@ 0 = Route 1 rival pending
+@ 1 = Route 1 cleared; Brassfall rival pending
+@ 2 = Brassfall rival cleared
+@
+@ Later chapter flags imply earlier flags during repair only:
+@ FLAG_CHAPTER_1_COMPLETE -> FLAG_BRASSFALL_CITY_ENTERED
+@ FLAG_BRASSFALL_CITY_ENTERED -> FLAG_CINDER_REED_GROVE_CLEARED
+@ FLAG_CINDER_REED_GROVE_CLEARED -> FLAG_ROUTE_1_CLEARED
+@ FLAG_ROUTE_1_CLEARED -> FLAG_EMBER_NORTH_GATE_TWIN_MOVED
+@
+@ Normal marker scripts stay conservative so they do not mask pathing or sequence bugs.
+
 BeaconfallChapter1_EventScript_ResetProgress::
 	clearflag FLAG_BEACONFALL_STARTER_SELECTED
 	clearflag FLAG_ROUTE_1_CLEARED
 	clearflag FLAG_CINDER_REED_GROVE_CLEARED
 	clearflag FLAG_BRASSFALL_CITY_ENTERED
 	clearflag FLAG_CHAPTER_1_COMPLETE
+	clearflag FLAG_SYS_POKEMON_GET
+	clearflag FLAG_BEACONFALL_TUTORIAL_RIVAL_BEATEN
+	clearflag FLAG_BEACONFALL_GROVE_LAMP_A
+	clearflag FLAG_BEACONFALL_GROVE_LAMP_B
+	clearflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
+	clearflag FLAG_FORTE_GYM_RIG_LEFT
+	clearflag FLAG_FORTE_GYM_RIG_RIGHT
+	clearflag FLAG_FORTE_GYM_RIG_CENTER
+	clearflag FLAG_UNUSED_0x272
 	setvar VAR_RIVAL_BATTLES, 0
 	setvar VAR_GYM_LIGHT_STATE, 0
 	setvar VAR_STARTER_MON, 0
+	setvar VAR_BEACONFALL_BLACKOUT_MSG, 0
+	@ Skip vanilla Littleroot bedroom clock/Mom sequence when reusing those layouts; safe for Beaconfall starts.
+	setvar VAR_LITTLEROOT_INTRO_STATE, 7
+	setflag FLAG_SET_WALL_CLOCK
 	return
 
 BeaconfallChapter1_EventScript_StartJourney::
 	setflag FLAG_BEACONFALL_STARTER_SELECTED
+	setflag FLAG_SYS_POKEMON_GET
 	setflag FLAG_SYS_POKEDEX_GET
 	special SetUnlockedPokedexFlags
 	setvar VAR_RIVAL_BATTLES, 0
+	clearflag FLAG_BEACONFALL_TUTORIAL_RIVAL_BEATEN
+	clearflag FLAG_FORTE_GYM_RIG_LEFT
+	clearflag FLAG_FORTE_GYM_RIG_RIGHT
+	clearflag FLAG_FORTE_GYM_RIG_CENTER
 	setvar VAR_GYM_LIGHT_STATE, 0
+	setrespawn HEAL_LOCATION_EMBER_HOLLOW_PLAYERS_HOUSE_2F
+	@ Sync HGSS party follower (OW) now that the lead Pokémon is the starter; map reload also calls UpdateFollowingPokemon.
+	updatefollowingmon
+	return
+
+BeaconfallChapter1_EventScript_RepairProgression::
+	goto_if_set FLAG_CHAPTER_1_COMPLETE, BeaconfallChapter1_EventScript_RepairChapterComplete
+	goto_if_set FLAG_BRASSFALL_CITY_ENTERED, BeaconfallChapter1_EventScript_RepairBrassfallEntered
+	goto_if_set FLAG_CINDER_REED_GROVE_CLEARED, BeaconfallChapter1_EventScript_RepairGroveCleared
+	goto_if_set FLAG_ROUTE_1_CLEARED, BeaconfallChapter1_EventScript_RepairRoute1Cleared
+	goto_if_set FLAG_BEACONFALL_STARTER_SELECTED, BeaconfallChapter1_EventScript_RepairStarterOnly
+	return
+
+BeaconfallChapter1_EventScript_RepairChapterComplete::
+	setflag FLAG_BRASSFALL_CITY_ENTERED
+	setflag FLAG_CINDER_REED_GROVE_CLEARED
+	setflag FLAG_ROUTE_1_CLEARED
+	setflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
+	setvar VAR_RIVAL_BATTLES, 2
+	return
+
+BeaconfallChapter1_EventScript_RepairBrassfallEntered::
+	setflag FLAG_CINDER_REED_GROVE_CLEARED
+	setflag FLAG_ROUTE_1_CLEARED
+	setflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
+	setvar VAR_RIVAL_BATTLES, 2
+	return
+
+BeaconfallChapter1_EventScript_RepairGroveCleared::
+	setflag FLAG_ROUTE_1_CLEARED
+	setflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
+	setvar VAR_RIVAL_BATTLES, 1
+	return
+
+BeaconfallChapter1_EventScript_RepairRoute1Cleared::
+	setflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
+	setvar VAR_RIVAL_BATTLES, 1
+	return
+
+BeaconfallChapter1_EventScript_RepairStarterOnly::
+	setvar VAR_RIVAL_BATTLES, 0
+	return
+
+BeaconfallChapter1_EventScript_GiveFirstPokeBalls::
+	goto_if_set FLAG_UNUSED_0x272, BeaconfallChapter1_EventScript_GiveFirstPokeBallsDone
+	giveitem ITEM_POKE_BALL, 5
+	goto_if_eq VAR_RESULT, FALSE, BeaconfallChapter1_EventScript_GiveFirstPokeBallsDone
+	setflag FLAG_UNUSED_0x272
+BeaconfallChapter1_EventScript_GiveFirstPokeBallsDone::
 	return
 
 BeaconfallChapter1_EventScript_MarkRoute1Cleared::
 	setflag FLAG_ROUTE_1_CLEARED
+	setflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
 	setvar VAR_RIVAL_BATTLES, 1
 	return
 
@@ -33,4 +116,9 @@ BeaconfallChapter1_EventScript_MarkBrassfallEntered::
 
 BeaconfallChapter1_EventScript_CompleteChapter::
 	setflag FLAG_CHAPTER_1_COMPLETE
+	setflag FLAG_BRASSFALL_CITY_ENTERED
+	setflag FLAG_CINDER_REED_GROVE_CLEARED
+	setflag FLAG_ROUTE_1_CLEARED
+	setflag FLAG_EMBER_NORTH_GATE_TWIN_MOVED
+	setvar VAR_RIVAL_BATTLES, 2
 	return

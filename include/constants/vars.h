@@ -52,7 +52,7 @@
 #define VAR_RECYCLE_GOODS                                0x4020
 #define VAR_REPEL_STEP_COUNT                             0x4021
 #define VAR_ICE_STEP_COUNT                               0x4022
-#define VAR_STARTER_MON                                  0x4023 // 0=Treecko, 1=Torchic, 2=Mudkip
+#define VAR_STARTER_MON                                  0x4023 // 0=Turtwig, 1=Chimchar, 2=Piplup
 #define VAR_MIRAGE_RND_H                                 0x4024
 #define VAR_MIRAGE_RND_L                                 0x4025
 #define VAR_SECRET_BASE_MAP                              0x4026
@@ -267,9 +267,9 @@
 #define VAR_SCOTT_BF_CALL_STEP_COUNTER                   0x40F5
 #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER             0x40F6
 #define VAR_RIVAL_BATTLES                                0x40F7
-#define VAR_GYM_LIGHT_STATE                              0x40F8
+#define VAR_GYM_LIGHT_STATE                              0x40F8 // 0–3: count of lit Forte Hall rigs (see FLAG_FORTE_GYM_RIG_*)
 #define VAR_UNUSED_0x40F9                                0x40F9 // Unused Var
-#define VAR_UNUSED_0x40FA                                0x40FA // Unused Var
+#define VAR_BEACONFALL_BLACKOUT_MSG                       0x40FA // 0 = show blackout text once on Ember via ON_FRAME; 1 = done
 #define VAR_UNUSED_0x40FB                                0x40FB // Unused Var
 #define VAR_UNUSED_0x40FC                                0x40FC // Unused Var
 #define VAR_UNUSED_0x40FD                                0x40FD // Unused Var

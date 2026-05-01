@@ -3,18 +3,56 @@ Route1_SaltwindPath_MapScripts::
 	.byte 0
 
 Route1_SaltwindPath_OnTransition::
-	setworldmapflag FLAG_WORLD_MAP_ROUTE101
+	call BeaconfallChapter1_EventScript_RepairProgression
+	end
+
+Route1_SaltwindPath_EventScript_Mira::
+	lock
+	faceplayer
+	goto_if_set FLAG_ROUTE_1_CLEARED, Route1_SaltwindPath_EventScript_MiraAfter
+	msgbox Route1_SaltwindPath_Text_MiraReady, MSGBOX_DEFAULT
+	release
+	end
+
+Route1_SaltwindPath_EventScript_MiraAfter::
+	msgbox Route1_SaltwindPath_Text_RivalAfter, MSGBOX_DEFAULT
+	release
 	end
 
 Route1_SaltwindPath_EventScript_RivalBattle::
 	lockall
-	trainerbattle_single TRAINER_BEACONFALL_RIVAL1, Route1_SaltwindPath_Text_RivalIntro, Route1_SaltwindPath_Text_RivalDefeat, Route1_SaltwindPath_EventScript_RivalBattleDefeated
+	goto_if_set FLAG_ROUTE_1_CLEARED, Route1_SaltwindPath_EventScript_RivalBattleAlreadyDone
+	turnobject LOCALID_ROUTE1_MIRA, DIR_SOUTH
+	msgbox Route1_SaltwindPath_Text_MiraChallenge, MSGBOX_DEFAULT
+	closemessage
+	switch VAR_STARTER_MON
+	case 0, Route1_SaltwindPath_EventScript_RivalBattleChimchar
+	case 1, Route1_SaltwindPath_EventScript_RivalBattlePiplup
+	case 2, Route1_SaltwindPath_EventScript_RivalBattleTurtwig
+	end
+
+Route1_SaltwindPath_EventScript_RivalBattleAlreadyDone::
 	releaseall
+	end
+
+Route1_SaltwindPath_EventScript_RivalBattleChimchar::
+	trainerbattle_single TRAINER_BEACONFALL_RIVAL1_CHIMCHAR, Route1_SaltwindPath_Text_RivalIntro, Route1_SaltwindPath_Text_RivalDefeat, Route1_SaltwindPath_EventScript_RivalBattleDefeated
+	end
+
+Route1_SaltwindPath_EventScript_RivalBattlePiplup::
+	trainerbattle_single TRAINER_BEACONFALL_RIVAL1_PIPLUP, Route1_SaltwindPath_Text_RivalIntro, Route1_SaltwindPath_Text_RivalDefeat, Route1_SaltwindPath_EventScript_RivalBattleDefeated
+	end
+
+Route1_SaltwindPath_EventScript_RivalBattleTurtwig::
+	trainerbattle_single TRAINER_BEACONFALL_RIVAL1_TURTWIG, Route1_SaltwindPath_Text_RivalIntro, Route1_SaltwindPath_Text_RivalDefeat, Route1_SaltwindPath_EventScript_RivalBattleDefeated
 	end
 
 Route1_SaltwindPath_EventScript_RivalBattleDefeated::
 	call BeaconfallChapter1_EventScript_MarkRoute1Cleared
-	msgbox Route1_SaltwindPath_Text_RivalAfter, MSGBOX_AUTOCLOSE
+	msgbox Route1_SaltwindPath_Text_RivalAfter, MSGBOX_DEFAULT
+	closemessage
+	removeobject LOCALID_ROUTE1_MIRA
+	releaseall
 	end
 
 Route1_SaltwindPath_EventScript_Gatekeeper::
@@ -46,9 +84,28 @@ Route1_SaltwindPath_EventScript_TrainerSailorDefeated::
 	msgbox Route1_SaltwindPath_Text_SailorAfter, MSGBOX_AUTOCLOSE
 	end
 
+Route1_SaltwindPath_EventScript_TrainerCoach::
+	trainerbattle_single TRAINER_BEACONFALL_ROUTE_COACH, Route1_SaltwindPath_Text_CoachIntro, Route1_SaltwindPath_Text_CoachDefeat, Route1_SaltwindPath_EventScript_TrainerCoachDefeated
+	end
+
+Route1_SaltwindPath_EventScript_TrainerCoachDefeated::
+	msgbox Route1_SaltwindPath_Text_CoachAfter, MSGBOX_AUTOCLOSE
+	end
+
 Route1_SaltwindPath_EventScript_RouteSign::
 	msgbox Route1_SaltwindPath_Text_RouteSign, MSGBOX_SIGN
 	end
+
+Route1_SaltwindPath_Text_MiraReady::
+	.string "MIRA: There you are.\p"
+	.string "Step forward when you're ready.\p"
+	.string "I want to see how your partner\n"
+	.string "handles a real route fight.$"
+
+Route1_SaltwindPath_Text_MiraChallenge::
+	.string "MIRA: Good. No more lab talk.\p"
+	.string "Show me your first real battle\n"
+	.string "on Saltwind Path.$"
 
 Route1_SaltwindPath_Text_RivalIntro::
 	.string "You made it this far already?\p"
@@ -72,25 +129,37 @@ Route1_SaltwindPath_Text_GateOpen::
 	.string "CINDER REED GROVE is open now.$"
 
 Route1_SaltwindPath_Text_ScoutIntro::
-	.string "I'm scouting the path ahead.\n"
-	.string "Let's battle!$"
+	.string "Status swings longer fights than raw power.\n"
+	.string "Can you keep up when the tempo slips?$"
 
 Route1_SaltwindPath_Text_ScoutDefeat::
-	.string "I need better footing...$"
+	.string "Okay. You didn't panic when it got messy.$"
 
 Route1_SaltwindPath_Text_ScoutAfter::
-	.string "Keep your eyes on the path.\n"
-	.string "Waves can hide trouble.$"
+	.string "Poison, paralysis, sleep. They all buy time.\n"
+	.string "Don't ignore your own conditions either.$"
 
 Route1_SaltwindPath_Text_SailorIntro::
-	.string "The breeze is perfect for a battle!$"
+	.string "Types are the harbor rules. Break them and\n"
+	.string "you get dunked.$"
 
 Route1_SaltwindPath_Text_SailorDefeat::
-	.string "Whoa, that current carried me away!$"
+	.string "You lined up the matchup. Respect.$"
 
 Route1_SaltwindPath_Text_SailorAfter::
-	.string "Saltwind Path is short, but it can\n"
-	.string "still catch you off guard.$"
+	.string "Water and Grass overlap on Ground and Rock.\n"
+	.string "Figure out the double-ups early.$"
+
+Route1_SaltwindPath_Text_CoachIntro::
+	.string "STAB, movement, clean switches. That's the\n"
+	.string "whole drill. One more quick scrimmage.$"
+
+Route1_SaltwindPath_Text_CoachDefeat::
+	.string "Textbook wraps. You're ready for the grove.$"
+
+Route1_SaltwindPath_Text_CoachAfter::
+	.string "Short route, but it teaches a full toolkit.\n"
+	.string "Keep those basics under your belt.$"
 
 Route1_SaltwindPath_Text_RouteSign::
 	.string "SALTWIND PATH\p"

@@ -9,14 +9,14 @@
 
 Pokémon Beaconfall Chapter 1 is a complete, playable opening chapter that starts a fresh player in
 Ember Hollow Town, teaches the core game loop, and ends with the first badge plus a clear next
-objective. The starter trio is Growlithe, Wooper, and Budew. It must feel like a full episode on its
+objective. The starter trio is Turtwig, Chimchar, and Piplup. It must feel like a full episode on its
 own, not a partial demo.
 
 ## Clarifications
 
 ### Session 2026-03-28
 
-- Q: Which starter trio should Chapter 1 use? → A: Growlithe, Wooper, and Budew.
+- Q: Which starter trio should Chapter 1 use? → A: Turtwig, Chimchar, and Piplup.
 
 ## Non-goals
 
@@ -38,8 +38,8 @@ own, not a partial demo.
 
 ## Chapter flow
 
-1. The player begins in Ember Hollow Town, meets the professor, and chooses Growlithe, Wooper, or
-   Budew as a starter.
+1. The player begins in Ember Hollow Town, meets the professor, and chooses Turtwig, Chimchar, or
+   Piplup as a starter.
 2. The player receives the Pokédex and the chapter's first objective.
 3. The player moves through Route 1 / Saltwind Path, where the first rival battle and early trainer
    battles teach the loop.
@@ -110,7 +110,7 @@ own, not a partial demo.
 
 ### User Story 1 - Begin the Chapter (Priority: P1)
 
-A new player starts the game, completes the opening sequence, chooses Growlithe, Wooper, or Budew,
+A new player starts the game, completes the opening sequence, chooses Turtwig, Chimchar, or Piplup,
 receives the Pokédex, and leaves the starting town with a clear first objective.
 
 **Why this priority**: The opening must work before any later story beats matter. Without starter
@@ -123,7 +123,7 @@ without restarting.
 **Acceptance Scenarios**:
 
 1. **Given** a fresh save, **When** the opening sequence ends, **Then** the player can choose one
-   of Growlithe, Wooper, or Budew and receives the Pokédex.
+   of Turtwig, Chimchar, or Piplup and receives the Pokédex.
 2. **Given** a completed starter choice, **When** the player saves and reloads, **Then** the chosen
    starter and opening progress remain intact.
 
@@ -187,8 +187,8 @@ puzzle, battles, badge reward, and next objective all resolve cleanly.
 
 ### Functional Requirements
 
-- **FR-001**: The chapter MUST begin in Ember Hollow Town and let the player choose Growlithe,
-  Wooper, or Budew and receive the Pokédex before free exploration starts.
+- **FR-001**: The chapter MUST begin in Ember Hollow Town and let the player choose Turtwig,
+  Chimchar, or Piplup and receive the Pokédex before free exploration starts.
 - **FR-002**: The chapter MUST present the main path as a fixed five-location chapter ending at the
   first badge.
 - **FR-003**: The chapter MUST include two rival battles at the intended story beats.
@@ -209,7 +209,7 @@ puzzle, battles, badge reward, and next objective all resolve cleanly.
 ### Key Entities *(include if feature involves data)*
 
 - **Chapter Progress**: The ordered set of chapter beats and their completion state.
-- **Starter Choice**: The chosen starter from Growlithe, Wooper, or Budew and the state created by
+- **Starter Choice**: The chosen starter from Turtwig, Chimchar, or Piplup and the state created by
   the opening sequence.
 - **Rival Encounter**: One of the two rival battles and its completion status.
 - **Gym Puzzle State**: The current light progression and gym access state.

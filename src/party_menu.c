@@ -115,6 +115,7 @@ enum {
     MENU_CATALOG_MOWER,
     MENU_CHANGE_FORM,
     MENU_CHANGE_ABILITY,
+    MENU_PC,
     MENU_FIELD_MOVES
 };
 
@@ -191,7 +192,7 @@ struct PartyMenuInternal
     u32 spriteIdCancelPokeball:7;
     u32 messageId:14;
     u8 windowId[3];
-    u8 actions[8];
+    u8 actions[10];
     u8 numActions;
     // In vanilla Emerald, only the first 0xB0 hwords (0x160 bytes) are actually used.
     // However, a full 0x100 hwords (0x200 bytes) are allocated.
@@ -492,6 +493,9 @@ static void CursorCb_CatalogFan(u8);
 static void CursorCb_CatalogMower(u8);
 static void CursorCb_ChangeForm(u8);
 static void CursorCb_ChangeAbility(u8);
+static void CursorCb_PlayerPC(u8);
+static void CB2_ReturnToFieldOpenPlayerPC(void);
+static void FieldCB_OpenPlayerPCFromPartyMenu(void);
 void TryItemHoldFormChange(struct Pokemon *mon, s8 slotId);
 static void ShowMoveSelectWindow(u8 slot);
 static void Task_HandleWhichMoveInput(u8 taskId);
@@ -2866,6 +2870,7 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
 
     sPartyMenuInternal->numActions = 0;
     AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SUMMARY);
+    AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_PC);
 
     if (P_PARTY_MOVE_RELEARNER
      && GetMonData(&mons[slotId], MON_DATA_SPECIES)
@@ -3057,6 +3062,24 @@ static void CursorCb_Summary(u8 taskId)
 {
     PlaySE(SE_SELECT);
     sPartyMenuInternal->exitCallback = CB2_ShowPokemonSummaryScreen;
+    Task_ClosePartyMenu(taskId);
+}
+
+static void FieldCB_OpenPlayerPCFromPartyMenu(void)
+{
+    PlayerPCFromPartyMenu();
+}
+
+static void CB2_ReturnToFieldOpenPlayerPC(void)
+{
+    gFieldCallback = FieldCB_OpenPlayerPCFromPartyMenu;
+    SetMainCallback2(CB2_ReturnToField);
+}
+
+static void CursorCb_PlayerPC(u8 taskId)
+{
+    PlaySE(SE_PC_LOGIN);
+    sPartyMenuInternal->exitCallback = CB2_ReturnToFieldOpenPlayerPC;
     Task_ClosePartyMenu(taskId);
 }
 

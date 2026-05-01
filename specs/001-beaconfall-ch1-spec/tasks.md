@@ -43,7 +43,7 @@ validation of each chapter beat.
 
 ## Phase 3: User Story 1 - Begin the Chapter (Priority: P1) 🎯 MVP
 
-**Goal**: The opening sequence lets the player choose Growlithe, Wooper, or Budew and receive the
+**Goal**: The opening sequence lets the player choose Turtwig, Chimchar, or Piplup and receive the
 Pokédex.
 
 **Independent Test**: Start a fresh save and reach the post-starter state without touching later
