@@ -170,8 +170,8 @@
         .weight = 52,
         .description = COMPOUND_STRING(
             "Its slick feathers shed salt and spray.\n"
-            "It tests the current with quick kicks before\n"
-            "committing to a swim."),
+            "It tests the current with quick kicks\n"
+            "before committing to a swim."),
         .pokemonScale = 491,
         .pokemonOffset = 17,
         .trainerScale = 256,
