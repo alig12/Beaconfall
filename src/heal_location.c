@@ -71,7 +71,9 @@ bool32 IsLastHealLocationPlayerHouse()
         || IsLastHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE_2F)
         || IsLastHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE)
         || IsLastHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F)
+#if !defined(FIRERED) && !defined(LEAFGREEN)
         || IsLastHealLocation(HEAL_LOCATION_EMBER_HOLLOW_PLAYERS_HOUSE_2F)
+#endif
         || IsLastHealLocation(HEAL_LOCATION_PALLET_TOWN))
         return TRUE;
 

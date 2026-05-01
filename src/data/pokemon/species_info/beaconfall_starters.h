@@ -27,9 +27,9 @@
         .height = 4,
         .weight = 102,
         .description = COMPOUND_STRING(
-            "The curled leaves on its head sense moisture\n"
-            "in the air. It roots itself in rich soil to\n"
-            "store energy before long journeys."),
+            "Curled leaves sense moisture in the air.\n"
+            "It roots in rich soil to store energy\n"
+            "before long journeys."),
         .pokemonScale = 491,
         .pokemonOffset = 20,
         .trainerScale = 256,

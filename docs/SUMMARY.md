@@ -19,7 +19,7 @@
         - [WSL](./install/windows/WSL.md)
 - [Run documentation site locally](local_mdbook/index.md)
     - [Ubuntu WSL1/WSL2](local_mdbook/ubuntu_WSL.md)
-- [Beaconfall]()
+- [Beaconfall](beaconfall_chapter1_validator.md)
     - [Chapter 1 validator](beaconfall_chapter1_validator.md)
     - [Chapter 1 full smoke test](testing/ch1_full_smoke_test.md)
     - [Chapter 1 Forte Hall smoke test](testing/ch1_forte_hall_smoke_test.md)
